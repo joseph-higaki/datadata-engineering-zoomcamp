@@ -172,26 +172,51 @@ Terraform Installed
 
 1. commit push new [notebook](./CodespaceNotebookHelloWorld.ipynb)
 
-**Break**
-Going to lunch
+
+<details>
+<summary>
+Went to lunch
+</summary>
+
+**Going to Lunch Break**
+
 
 **Closed VS Code where codespace was running**
 
 **De-selected Auto-delete codespace at [github](https://github.com/codespaces/)**
+
 Because if I don't, I may need to re-install jupyter and terraform
 
 **Selected Stop Codespace**
+
 So that core mins are not spent :)
 
+**Back from Lunch Break**
+
+Open codespace in vs code, becomes active
+
+</details>
+
+1. Before restarting the setup in codespaces for the docker / pg admin portion at [video 9:00](https://youtu.be/XOSUt8Ih3zA?si=WLzJEjHEA8SqiTaJ&t=542)
 
 
 
+## Docker 
+
+1. Let's watch [Intro to Docker video](https://youtu.be/EYNwNlOrpr0?si=PVcITvrzpt6aQqu_) 
+
+1. [Docker Concepts Refresher](../@scratchpad/docker-refresher/docker-refresher.md)
+
+<!---
 ## Attemp 2: Github Codespaces 2 (if #1 doesn’t work)
 Use a github codespace using [.devcontainer folder](https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/beb77c92b9a0982b718c588bdee207764c319857/.devcontainer) provided at course structure using the [course video](https://www.youtube.com/watch?v=XOSUt8Ih3zA&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=17)
 codespace is created pointing to the full course cloned repo
+
+
 
 ### New Codespace
 
 ## Attemp 3: GCP Cloud VM 
 
 ## Attemp 4: Local Docker and Local Terraform?? video
+-->
