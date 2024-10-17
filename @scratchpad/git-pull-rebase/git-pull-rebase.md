@@ -54,5 +54,5 @@ command. Here’s a step-by-step explanation:
 
 By following these steps, you ensure that your local changes are preserved and applied on top of the latest changes from the remote branch.
 
-1. Now jupyter notebook changes are on top of 
+1. Now [jupyter notebook](../../01-intro-setting-environment/CodespaceNotebookHelloWorld.ipynb) changes are on top  
 ![alt text](image-3.png)
