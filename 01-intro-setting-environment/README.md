@@ -30,24 +30,24 @@ But I just copied the .devcontainer folder to my workspace.
 And codespace is created pointing to my workspace.
 [Instructions here](../.devcontainer/README.md#option-2-github-codespaces)
 
-* Create Codespace
+1. Create Codespace
 ![create codespace](../_resources/01%20dialog%20create%20codespace.png)
 ![create codespace open vs code](../_resources/01%20dialog%20create%20codespace%20open%20vs%20code.png)
 
-Opened a new vs code window
+1. Opened a new vs code window
 ![ new vscode window codespace](../_resources/01%20new%20vscode%20window%20codespace.png)
 
-Asking me to github login
+1. Asking me to github login
 ![allow github login dialog](../_resources/01%20allow%20github%20login%20dialog.png)
 ![signing in github](../_resources/01%20signining%20in%20github%20login.png.png)
 opened a breowser window
 ![browser authorize vscode into githubcodespace 1](../_resources/01%20browser%20authorize%20vscode%20into%20githubcodespace%2001.png)
 ![browser authorize vscode into githubcodespace 2](../_resources/01%20browser%20authorize%20vscode%20into%20githubcodespace%2002.png)
 
-Asking again to open VS cpde
+1. Asking again to open VS cpde
 ![ask again open vs code](../_resources/01%20ask%20again%20open%20vs%20code.png)
 
-Loading codespace in VS Code (11:47 am)
+1. Loading codespace in VS Code (11:47 am)
 ![loading codespace in vs code](../_resources/01%20loading%20codespace%20in%20progress%20vs%20code.png)
 
 ## Attemp 2: Github Codespaces 2 (if #1 doesn’t work)
