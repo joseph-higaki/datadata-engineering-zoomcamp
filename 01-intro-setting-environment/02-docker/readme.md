@@ -11,7 +11,25 @@ docker info
 ```
 ![docker info](../../_resources/01%2002%20docker%20info%20codebase.png)
 
-Run a 
+Build an image
 ```
-docker build -f ProductionDockerfile -t test-python
+docker build -f ./PythonDockerfile -t test-python .
 ```
+
+List Docker Images
+
+```
+docker images
+``` 
+![alt text](image.png)
+
+Run newly created Docker Image
+```
+docker run -it test-python
+``` 
+![alt text](image-1.png)
+
+```
+docker ps -a
+```
+![alt text](image-2.png)
