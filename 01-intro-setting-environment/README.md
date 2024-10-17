@@ -170,7 +170,8 @@ Terraform Installed
 1. Create Hello World Jupyter notebook
 ![Create Hello World Jupyter notebook](../_resources/01%20jupyter%20notebook%20helloworld.png)
 
-1. commit push new notebook
+1. commit push new [notebook](./CodespaceNotebookHelloWorld.ipynb)
+
 
 ## Attemp 2: Github Codespaces 2 (if #1 doesn’t work)
 Use a github codespace using [.devcontainer folder](https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/beb77c92b9a0982b718c588bdee207764c319857/.devcontainer) provided at course structure using the [course video](https://www.youtube.com/watch?v=XOSUt8Ih3zA&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=17)
