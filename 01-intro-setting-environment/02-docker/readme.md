@@ -33,3 +33,7 @@ docker run -it test-python
 docker ps -a
 ```
 ![alt text](image-2.png)
+
+
+**NEXT DO DOCKER DATA PIPELINE**
+**DO WITH LOCAL DOCKER?**
