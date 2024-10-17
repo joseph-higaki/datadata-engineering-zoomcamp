@@ -36,4 +36,5 @@ docker ps -a
 
 
 **NEXT DO DOCKER DATA PIPELINE**
+
 **DO WITH LOCAL DOCKER?**
