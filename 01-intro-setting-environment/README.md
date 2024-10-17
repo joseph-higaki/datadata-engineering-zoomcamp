@@ -207,6 +207,7 @@ Open codespace in vs code, becomes active
 
 1. [Docker Concepts Refresher](../@scratchpad/docker-refresher/docker-refresher.md)
 
+1. [Docker Setups](../01-intro-setting-environment/02-docker/)
 <!---
 ## Attemp 2: Github Codespaces 2 (if #1 doesn’t work)
 Use a github codespace using [.devcontainer folder](https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/beb77c92b9a0982b718c588bdee207764c319857/.devcontainer) provided at course structure using the [course video](https://www.youtube.com/watch?v=XOSUt8Ih3zA&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=17)
