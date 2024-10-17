@@ -172,6 +172,19 @@ Terraform Installed
 
 1. commit push new [notebook](./CodespaceNotebookHelloWorld.ipynb)
 
+**Break**
+Going to lunch
+
+**Closed VS Code where codespace was running**
+
+**De-selected Auto-delete codespace at [github](https://github.com/codespaces/)**
+Because if I don't, I may need to re-install jupyter and terraform
+
+**Selected Stop Codespace**
+So that core mins are not spent :)
+
+
+
 
 ## Attemp 2: Github Codespaces 2 (if #1 doesn’t work)
 Use a github codespace using [.devcontainer folder](https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/beb77c92b9a0982b718c588bdee207764c319857/.devcontainer) provided at course structure using the [course video](https://www.youtube.com/watch?v=XOSUt8Ih3zA&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=17)
