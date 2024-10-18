@@ -146,8 +146,10 @@ pd.read_sql("SELECT 1", con = engine)
 
 ![alt text](image-8.png)
 
-
+### Data wrangle and create it into pg-db
 
 ### Dockerize the script
 
 **DO WITH LOCAL DOCKER?**
+https://code.visualstudio.com/docs/devcontainers/containers 
+https://code.visualstudio.com/docs/devcontainers/tutorial 
