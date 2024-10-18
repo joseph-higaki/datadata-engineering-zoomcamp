@@ -1,0 +1,4 @@
+**__pycache__/
+.ipynb_checkpoints/
+.history
+**/ny_taxi_postgres_data/*
