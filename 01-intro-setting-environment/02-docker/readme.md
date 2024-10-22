@@ -98,6 +98,12 @@ PostgreSQL Running
 ![alt text](image-4.png)
 ![alt text](image-6.png)
 
+## WHen Coming back to run existing posgre container
+
+```bash
+docker start pg-db
+```
+
 I instlled pgcli in the local dev environment. (SHould I include this in the .devcontainer / requirements.txt?)
 
 ```bash
@@ -147,6 +153,14 @@ pd.read_sql("SELECT 1", con = engine)
 ![alt text](image-8.png)
 
 ### Data wrangle and create it into pg-db
+
+While inspecting `yellow_tripdata_2021-01.csv` realize that we need to some column transformations
+
+THis are at the notebook [notebook](./0-explore-pgdb.ipynb)
+
+### Ingest data into the database through the notebook 
+Ingest csv data in chunks [1-ingest-pgdb.ipynb](./1-ingest-pgdb.ipynb)
+
 
 ### Dockerize the script
 
