@@ -1,0 +1,26 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Current File with Arguments",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": [
+                "${command:pickArgs}"
+            ]
+        },
+        {
+            "name": "Python Debugger: 1-ingest-pgdb.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/01-intro-setting-environment/02-docker/1-ingest-pgdb.py",
+            "args" : ["--db_user", "root", "--db_password", "root", "--db_host", "127.0.0.1", "--db_port", "5432", "--db_name", "ny_taxi", "--table_name", "yellow_taxi_data",  "--data_url", "https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz"]
+        },
+       
+    ]
+}
