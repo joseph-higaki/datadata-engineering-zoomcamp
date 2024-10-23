@@ -40,7 +40,7 @@ python 1-ingest-pgdb.py
 python 1-ingest-pgdb.py 
 -db_user=root -db_password=root -db_host=127.0.0.1 -db_port=5432 -db_name=ny_taxi -table_name=yellow_taxi_data -data_url=https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz
 
---db_user=root  --db_password=root  --db_host=127.0.0.1  --db_port=5432  --db_name=ny_taxi  --table_name=yellow_taxi_data  --data_url=https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz
+python 1-ingest-pgdb.py  --db_user=root  --db_password=root  --db_host=127.0.0.1  --db_port=5432  --db_name=ny_taxi  --table_name=yellow_taxi_data  --data_url=https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz
 """
 
 
