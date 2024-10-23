@@ -219,7 +219,27 @@ https://www.youtube.com/watch?v=B1WwATwf-vY&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhG
 jupyter nbconvert --to=script 1-ingest-pgdb.ipynb
 ```
 
-Making db connection a singleton,, cause why not :)
+#### Python script to ingest csv
+
+[Python Ingest script](./1-ingest-pgdb.py)
+
+Executed full https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz in chunks of 10K records
+
+Result
+
+```bash
+***** Table yellow_taxi_data count 1369765 records *******************************************************
+***** * **************************************************************************************************
+***** File load completed ********************************************************************************
+***** Start batch 2024-10-23 10:47:46.217122 *************************************************************
+***** End   batch 2024-10-23 10:49:19.306202 *************************************************************
+***** Total time taken was     93.089 seconds for 137 iterations *****************************************
+***** Start Table count yellow_taxi_data: 0 records ******************************************************
+***** End   Table count yellow_taxi_data: 1369765 records ************************************************
+***** * **************************************************************************************************
+```
+![alt text](image-12.png)
+
 
 
 
