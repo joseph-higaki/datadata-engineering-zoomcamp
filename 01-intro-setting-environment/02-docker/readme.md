@@ -240,6 +240,24 @@ Result
 ```
 ![alt text](image-12.png)
 
+#### Put the ready script into a container
+
+```bash DockerFile
+
+```
+
+
+```bash
+
+docker build -f ./1IngestPgdbDockerFile -t 1-ingest-pgdb-image .
+
+docker run -it --name 1-ingest-pgdb --network=pg-db-network 1-ingest-pgdb-image
+```
+
+Still here, 
+![alt text](image-13.png)
+
+Might have something to do with packages version
 
 
 
