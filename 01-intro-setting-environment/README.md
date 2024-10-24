@@ -148,6 +148,10 @@ Terraform Installed
     ```
     pip install jupyter        
     ```
+Remember that the devcontainer as it is right now, doesn't have Jupyter installed
+after installing, there are more packages in the `pip list` 
+![comparison_pip_list_jupyter_install](../_resources/01_comparison_pip_list_jupyter_install.png)
+
 
 1. Open bash command line (so far I was in pwshell)
     ```
