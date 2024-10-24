@@ -242,10 +242,6 @@ Result
 
 #### Put the ready script into a container
 
-```bash DockerFile
-
-```
-
 
 ```bash
 
@@ -254,10 +250,45 @@ docker build -f ./1IngestPgdbDockerFile -t 1-ingest-pgdb-image .
 docker run -it --name 1-ingest-pgdb --network=pg-db-network 1-ingest-pgdb-image
 ```
 
-Still here, 
-![alt text](image-13.png)
+#### DockerFile hardcoding the params
 
-Might have something to do with packages version
+```DockerFile 
+FROM python:3.9.20
+COPY 1-ingest-pgdb-requirements.txt 1-ingest-pgdb-requirements.txt
+RUN pip install -r 1-ingest-pgdb-requirements.txt
+COPY 1-ingest-pgdb.py 1-ingest-pgdb.py
+ENTRYPOINT ["python", "1-ingest-pgdb.py", "--db_user", "root", "--db_password", "root", "--db_host", "pg-db", "--db_port", "5432", "--db_name", "ny_taxi", "--table_name", "yellow_taxi_data",  "--data_url", "https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz"]
+```
+
+#### Removing params to the ingestion from the Docker file
+
+```DockerFile
+FROM python:3.9.20
+COPY 1-ingest-pgdb-requirements.txt 1-ingest-pgdb-requirements.txt
+RUN pip install -r 1-ingest-pgdb-requirements.txt
+COPY 1-ingest-pgdb.py 1-ingest-pgdb.py
+ENTRYPOINT ["python", "1-ingest-pgdb.py"]
+``` 
+
+```bash
+docker run -it \ 
+  --network=pg-db-network \
+  --name 1-ingest-pgdb \
+  1-ingest-pgdb-image \     
+    --db_user=root \ 
+    --db_password=root \ 
+    --db_host=pg-db \ 
+    --db_port=5432 \ 
+    --db_name=ny_taxi \ 
+    --table_name=yellow_taxi_data \
+    --data_url=https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz
+
+#Not sure why my bash doesn't work with multiline
+
+docker run -it   --network=pg-db-network   --name 1-ingest-pgdb  1-ingest-pgdb-image     --db_user=root    --db_password=root     --db_host=pg-db     --db_port=5432     --db_name=ny_taxi     --table_name=yellow_taxi_data     --data_url=https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz
+```
+
+
 
 
 
