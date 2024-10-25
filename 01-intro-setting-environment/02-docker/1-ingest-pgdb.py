@@ -22,9 +22,7 @@ schema = {
     'tolls_amount': pd.Series(dtype='float64'),
     'improvement_surcharge': pd.Series(dtype='float64'),
     'total_amount': pd.Series(dtype='float64'),
-    'congestion_surcharge': pd.Series(dtype='float64'),
-    'tpep_pickup_datetime_text': pd.Series(dtype='object'),
-    'tpep_dropoff_datetime_text': pd.Series(dtype='object')    
+    'congestion_surcharge': pd.Series(dtype='float64')
 }
 
 """
