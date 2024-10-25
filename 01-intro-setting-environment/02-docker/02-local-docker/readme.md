@@ -90,6 +90,16 @@ SSH doesnt work but git don't work either
 <img src="image-10.png">
 </td>
 </tr>
+<tr>
+<td>
+</td>
+<td></td>
+<td>
+I can try do pull from vs.code
+<img src="image-11.png">
+
+</td>
+</tr>
 </table>
 
 
