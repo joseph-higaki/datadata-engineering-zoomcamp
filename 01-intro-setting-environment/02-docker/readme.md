@@ -288,6 +288,125 @@ docker run -it \
 docker run -it   --network=pg-db-network   --name 1-ingest-pgdb  1-ingest-pgdb-image     --db_user=root    --db_password=root     --db_host=pg-db     --db_port=5432     --db_name=ny_taxi     --table_name=yellow_taxi_data     --data_url=https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz
 ```
 
+#### Using local mount for postgresql
+
+##### Kill / Remove pg-db
+ 
+ ```bash
+docker kill pg-db
+docker rm pg-db
+ ```
+
+ ##### Create `pg-db` with Local mount
+
+Adding a [.gitignore](./gitignore)
+ ```git
+ .ipynb_checkpoints/
+ny_taxi_postgres_data/
+ ```
+
+```bash
+docker run -it \
+    --name pg-db \
+    --network=pg-db-network \
+    -e POSTGRES_USER="root" \
+    -e POSTGRES_PASSWORD="root" \
+    -e POSTGRES_DB="ny_taxi" \
+    -v ./ny_taxi_postgresql_data:/var/lib/postgresql/data \
+    -p 5432:5432 \
+    postgres:16   
+```
+
+Re-runnnig existing container `1-ingest-pgdb` works
+
+```bash
+docker start 1-ingest-pgdb
+```
+
+#### using Docker Compose
+
+[1-pgdb-docker-compose.yaml](./1-pgdb-docker-compose.yaml)
+
+```yaml
+services:
+  pg-db:
+    image: postgres:16
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=ny_taxi
+    volumes:
+      - "./ny_taxi_postgresql_data:/var/lib/postgresql/data"
+    ports: 
+      - "5432:5432"
+  pgadmin:
+    image: elestio/pgadmin
+    environment: 
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    ports:
+      - "8080:80"
+```
+
+```bash
+docker-compose -f 1-pgdb-docker-compose.yaml up 
+```
+
+We didn't specify a network
+
+```bash
+docker network ls
+``` 
+![alt text](image-13.png)
+
+Create a network with <folder>_default name
+
+**BUT!!** Since I created the ingestion container `1-ingest-pgdb` with a network `pg-db-network` it cannot connect to the database 
+
+![alt text](image-14.png)
+
+##### Option 1: Using compose auto created network
+One option is to Create / Run ingestion container using the known network created by `docker compose`
+: `02-docker_default`
+
+```bash
+docker run -it \ 
+  --network=02-docker_default \
+  --name 1-ingest-pgdb \
+  1-ingest-pgdb-image \     
+    --db_user=root \ 
+    --db_password=root \ 
+    --db_host=pg-db \ 
+    --db_port=5432 \ 
+    --db_name=ny_taxi \ 
+    --table_name=yellow_taxi_data \
+    --data_url=https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz
+
+docker run -it   --network=02-docker_default   --name 1-ingest-pgdb  1-ingest-pgdb-image     --db_user=root    --db_password=root     --db_host=pg-db     --db_port=5432     --db_name=ny_taxi     --table_name=yellow_taxi_data     --data_url=https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz
+```
+##### Option 2: Using pre-existing network in compose
+
+Added to [1-pgdb-docker-compose.yaml](./1-pgdb-docker-compose.yaml)
+
+```yaml
+networks:
+  default:
+    name: pg-db-network
+    external: true
+```
+
+Create Network beforehand 
+```bash
+docker network create pg-db-network
+```
+
+```bash
+docker-compose -f 1-pgdb-docker-compose.yaml up -d
+
+docker run -it   --network=pg-db-network  --name 1-ingest-pgdb  1-ingest-pgdb-image     --db_user=root    --db_password=root     --db_host=pg-db     --db_port=5432     --db_name=ny_taxi     --table_name=yellow_taxi_data     --data_url=https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz
+``` 
+
+
 
 
 
