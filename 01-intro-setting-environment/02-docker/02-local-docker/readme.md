@@ -98,6 +98,8 @@ SSH doesnt work but git don't work either
 I can try do pull from vs.code
 <img src="image-11.png">
 
+And it works
+I will try to commit push from dev container
 </td>
 </tr>
 </table>
