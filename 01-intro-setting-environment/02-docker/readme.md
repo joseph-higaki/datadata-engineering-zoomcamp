@@ -403,9 +403,12 @@ docker network create pg-db-network
 ```bash
 docker-compose -f 1-pgdb-docker-compose.yaml up -d
 
+docker build -f ./1IngestPgdbDockerFile -t 1-ingest-pgdb-image .
+
 docker run -it   --network=pg-db-network  --name 1-ingest-pgdb  1-ingest-pgdb-image     --db_user=root    --db_password=root     --db_host=pg-db     --db_port=5432     --db_name=ny_taxi     --table_name=yellow_taxi_data     --data_url=https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz
 ``` 
 
+I think Ingest should also be at docker compose NEXT TO-DO
 
 
 
