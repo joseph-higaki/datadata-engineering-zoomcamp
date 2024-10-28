@@ -24,8 +24,6 @@ Nice explanation / flowchart about auth to use
 https://cloud.google.com/docs/authentication 
 
 
-
-
 ## Create Service Account 
 
 Go to IAM & Admin / Service Accounts and create service account:
@@ -52,9 +50,34 @@ I don't have it in my local win computer
 
 Even though it might be a vulnerability. I will mount a folder containg gcp key, so that i can use it from the dev container
 
+Set environment variable 
+
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS="/workspaces/data-engineering-zoomcamp/.gcp.auth/de-zoomcamp-jhigaki-course-XXXXX.json"
+```
+
+And then, use them to authenticate
+```bash
+gcloud auth application-default login
+```
+![alt text](image-5.png)
+
+But then it asks me to authnticate in the browser with a google account
+
 https://cloud.google.com/docs/authentication/provide-credentials-adc#attached-sa
 
 
+```bash
+gcloud auth login --cred-file=/workspaces/data-engineering-zoomcamp/.gcp.auth/de-zoomcamp-jhigaki-course-XXXXX.json
+--cred-file
+```
+And it works
+![alt text](image-6.png)
 
+Continuing with the gcp overview course instructions:
+Addded services to the service account
+![alt text](image-7.png)
 
-
+Enable these APIs for `de-zoomcamp-jhigaki-course` :
+https://console.cloud.google.com/apis/library/iam.googleapis.com
+https://console.cloud.google.com/apis/library/iamcredentials.googleapis.com
