@@ -1,5 +1,0 @@
-FROM python:3.9.20
-COPY 1-ingest-pgdb-requirements.txt 1-ingest-pgdb-requirements.txt
-RUN pip install -r 1-ingest-pgdb-requirements.txt
-COPY 1-ingest-pgdb.py 1-ingest-pgdb.py
-ENTRYPOINT ["python", "1-ingest-pgdb.py"]
