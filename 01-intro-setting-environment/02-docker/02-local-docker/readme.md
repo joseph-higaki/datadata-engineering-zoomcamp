@@ -107,8 +107,44 @@ Commit works, push doesn't
 </tr>
 </table>
 
-
 **I'm stuck trying to make dev container work with GITHUB**
+
+
+Right now I could work by opening the local docker dev container pointing to the same directory from my local system
+The only consideration is that I would have to git commands from a local terminal, instead of the vs.code container terminal
+
+One option I may try is the 
+https://code.visualstudio.com/remote/advancedcontainers/sharing-git-credentials 
+
+And 
+https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git 
+
+
+I'm going to restart my local system:
+1. try to connect as is to  ssh git@github.com 
+1. try to  connect as is to  ssh git@github.com from dev docker
+1. edit .bash_profile REPEAT
+
+
+
+For whatever reason this just work. [this is the log](.ssh-v-github-troubleshoot-devContainer-2.sh)
+
+**SOLUTION**
+Make sure that Windows local SSH agent is running, BEFORE you start your dev container
+
+```powershell
+# Make sure you're running as an Administrator
+Set-Service ssh-agent -StartupType Automatic
+Start-Service ssh-agent
+Get-Service ssh-agent
+``` 
+
+
+
+
+
+
+
 
 
 
