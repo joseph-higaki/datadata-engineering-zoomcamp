@@ -39,8 +39,18 @@ Go to IAM & Admin / Service Accounts and create service account:
 
 1. Not granting any other user access to this service account (optional)
 
-Then [CLient Libraries](https://cloud.google.com/docs/authentication/client-libraries) 
+1. Go to service account / manage Keys. create a JSON key
+![alt text](image-2.png)
 
+## How to use the service account Key
+I have gcloud sdk in my dev countainer
+![alt text](image-3.png)
+
+
+I don't have it in my local win computer
+![alt text](image-4.png)
+
+Even though it might be a vulnerability. I will mount a folder containg gcp key, so that i can use it from the dev container
 
 https://cloud.google.com/docs/authentication/provide-credentials-adc#attached-sa
 
