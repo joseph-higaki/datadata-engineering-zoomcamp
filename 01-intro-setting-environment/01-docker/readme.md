@@ -25,7 +25,7 @@ docker build -f ./PythonDockerfile -t test-python .
 docker images
 ``` 
 
-![alt text](image.png)
+![alt text](../../_resources/01-intro-setting-environment/01-docker/readme.md/image.png)
 
 1. Run newly created Docker Image
    
@@ -33,13 +33,13 @@ docker images
 docker run -it test-python
 ```
 
-![alt text](image-1.png)
+![alt text](../../_resources/01-intro-setting-environment/01-docker/readme.md/image-1.png)
 
 ```bash
 docker ps -a
 ```
 
-![alt text](image-2.png)
+![alt text](../../_resources/01-intro-setting-environment/01-docker/readme.md/image-2.png)
 
 1. Have [PythonDockerfile](./PythonDockerfile) start a python simple program 
    
@@ -73,7 +73,7 @@ docker build -f ./PythonDockerfile -t test-python .
 docker run -it test-python firstArg secondArg
 ```
 
-![alt text](image-3.png)
+![alt text](../../_resources/01-intro-setting-environment/01-docker/readme.md/image-3.png)
 
 ## Running Postgre in Docker 
 
@@ -95,8 +95,8 @@ docker run -it \
 ```
 
 PostgreSQL Running
-![alt text](image-4.png)
-![alt text](image-6.png)
+![alt text](../../_resources/01-intro-setting-environment/01-docker/readme.md/image-4.png)
+![alt text](../../_resources/01-intro-setting-environment/01-docker/readme.md/image-6.png)
 
 ## WHen Coming back to run existing posgre container
 
@@ -112,10 +112,10 @@ pip install psycopg
 ```
 
 I cannot connect to postgreSql running from pgcli
-![alt text](image-5.png)
+![alt text](../../_resources/01-intro-setting-environment/01-docker/readme.md/image-5.png)
 
 Nor telnet
-![alt text](image-7.png)
+![alt text](../../_resources/01-intro-setting-environment/01-docker/readme.md/image-7.png)
 
 
 
@@ -152,7 +152,7 @@ engine.connect()
 pd.read_sql("SELECT 1", con = engine)
 ```
 
-![alt text](image-8.png)
+![alt text](../../_resources/01-intro-setting-environment/01-docker/readme.md/image-8.png)
 
 ### Data wrangle and create it into pg-db
 
@@ -203,12 +203,12 @@ docker run -it \
 ```
 
 #### Manually Forwarded a port in VS Code 
-![alt text](image-9.png)
+![alt text](../../_resources/01-intro-setting-environment/01-docker/readme.md/image-9.png)
 
 #### Register pg-db in pgadmin
-![alt text](image-10.png)
+![alt text](../../_resources/01-intro-setting-environment/01-docker/readme.md/image-10.png)
 
-![alt text](image-11.png)
+![alt text](../../_resources/01-intro-setting-environment/01-docker/readme.md/image-11.png)
 
 ### Dockerize the script
 https://www.youtube.com/watch?v=B1WwATwf-vY&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=8
@@ -238,7 +238,7 @@ Result
 ***** End   Table count yellow_taxi_data: 1369765 records ************************************************
 ***** * **************************************************************************************************
 ```
-![alt text](image-12.png)
+![alt text](../../_resources/01-intro-setting-environment/01-docker/readme.md/image-12.png)
 
 #### Put the ready script into a container
 
@@ -357,13 +357,13 @@ We didn't specify a network
 ```bash
 docker network ls
 ``` 
-![alt text](image-13.png)
+![alt text](../../_resources/01-intro-setting-environment/01-docker/readme.md/image-13.png)
 
 Create a network with <folder>_default name
 
 **BUT!!** Since I created the ingestion container `1-ingest-pgdb` with a network `pg-db-network` it cannot connect to the database 
 
-![alt text](image-14.png)
+![alt text](../../_resources/01-intro-setting-environment/01-docker/readme.md/image-14.png)
 
 ##### Option 1: Using compose auto created network
 One option is to Create / Run ingestion container using the known network created by `docker compose`

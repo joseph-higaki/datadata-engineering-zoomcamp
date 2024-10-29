@@ -7,17 +7,17 @@ Trying to launch a dev container using the same settings
 what I did:
 
 ## Downloaded Docker for Win 
-![alt text](image.png)
+![alt text](../../../_resources/01-intro-setting-environment/01-docker/01-local-docker/readme.md/image.png)
 
 ## Opened folder Dev Containers: Open Folder
 
-![alt text](image-1.png)
+![alt text](../../../_resources/01-intro-setting-environment/01-docker/01-local-docker/readme.md/image-1.png)
 
 TOok 1 hr to build. Finnally, the container is build
-![alt text](image-2.png)
+![alt text](../../../_resources/01-intro-setting-environment/01-docker/01-local-docker/readme.md/image-2.png)
 
 And the folder is opened as Dev Container
-![alt text](image-3.png)
+![alt text](../../../_resources/01-intro-setting-environment/01-docker/01-local-docker/readme.md/image-3.png)
 
 ## PROBLEM: Cannot git remote
 
@@ -29,17 +29,17 @@ https://docs.github.com/en/authentication/connecting-to-github-with-ssh/using-ss
 ### Check git config
 [`git config -l`](./git-config-l-troubleshoot.sh)
 
-![alt text](image-4.png)
+![alt text](../../../_resources/01-intro-setting-environment/01-docker/01-local-docker/readme.md/image-4.png)
 
 ### Check git remote
 `git remote show origin` 
 
-![alt text](image-5.png)
+![alt text](../../../_resources/01-intro-setting-environment/01-docker/01-local-docker/readme.md/image-5.png)
 
 ### Check SSH to git 
 
 [`$ssh -v git@github.com`](./ssh-v-github-troubleshoot.sh)
-![alt text](image-6.png)
+![alt text](../../../_resources/01-intro-setting-environment/01-docker/01-local-docker/readme.md/image-6.png)
 
 ### Check ssh credeintials
 ssh-add -l
@@ -78,16 +78,16 @@ The agent has no identities
 <tr>
 <td>
 SSH works git pull as well
-<img src="image-9.png">
+<img src="../../../_resources/01-intro-setting-environment/01-docker/01-local-docker/readme.md/image-9.png">
 </td>
 <td>
 SSH doesnt work but git commands do work
-<img src="image-8.png">
+<img src="../../../_resources/01-intro-setting-environment/01-docker/01-local-docker/readme.md/image-8.png">
 
 </td>
 <td>
 SSH doesnt work but git don't work either
-<img src="image-10.png">
+<img src="../../../_resources/01-intro-setting-environment/01-docker/01-local-docker/readme.md/image-10.png">
 </td>
 </tr>
 <tr>
@@ -96,12 +96,12 @@ SSH doesnt work but git don't work either
 <td></td>
 <td>
 I can try do pull from vs.code
-<img src="image-11.png">
+<img src="../../../_resources/01-intro-setting-environment/01-docker/01-local-docker/readme.md/image-11.png">
 
 And PULL works
 I will try to commit push from dev container
 
-![alt text](image-12.png)
+![alt text](../../../_resources/01-intro-setting-environment/01-docker/01-local-docker/readme.md/image-12.png)
 Commit works, push doesn't
 </td>
 </tr>
