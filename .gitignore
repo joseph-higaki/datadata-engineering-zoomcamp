@@ -3,3 +3,7 @@
 .history
 **/ny_taxi_postgres_data/*
 *.auth/*
+*.tfstate
+*.tfstate.*
+**.terraform
+**.terraform.lock.*
