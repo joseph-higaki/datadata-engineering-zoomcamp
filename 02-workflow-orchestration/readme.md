@@ -22,35 +22,40 @@ I want to use Apache Airflow
 ![alt text](../_resources/02-workflow-orchestration/readme.md/image.png)
 
 ```mermaid
-flowchart TD
-    A[Extract] --> B[Transform]
-    B --> C[Load]
+flowchart LR
+    Extract --> TransformDL
+    TransformDL --> TransformDW
 
-    subgraph Extract
-        A1[Download Data from NYC TLC Website]
-        A2[Store Raw Data in GCS]
+    subgraph Extract ["Extract & Load"]
+        A1[wget NYC TLC Website]
+        A2[Raw Data in GCS]
         A1 --> A2
     end
 
-    subgraph Transform
-        B1[Load Raw Data into Staging Area]
-        B2[Clean Data (Remove Duplicates, Handle Missing Values)]
-        B3[Transform Data (Convert to Parquet if needed)]
-        B4[Create Fact and Dimension Tables]
-        B1 --> B2
-        B2 --> B3
-        B3 --> B4
+    subgraph Clean
+        X0[Read Parquet GCS]
+        X1[Remove Duplicates]
+        X2[Hable Missing Values]
+        X3[Store Clean Parquet]
+        X0 --> X1
+        X0 --> X2
+        X1 --> X3
+        X2 --> X3
     end
 
-    subgraph Load
-        C1[Load Data into BigQuery]
-        C2[Create Fact Table in BigQuery]
-        C3[Create Dimension Tables in BigQuery]
-        C4[Load Transformed Data into Fact and Dimension Tables]
-        C1 --> C2
-        C1 --> C3
-        C2 --> C4
-        C3 --> C4
+    subgraph TransformDL
+        B1[Read Raw GCS]
+        B2[Ensure Parquet into GCS]
+        Clean        
+        B1 --> B2
+        B2 --> Clean        
+    end
+
+
+    subgraph TransformDW
+        C1[Read Clean Parquet GCS]        
+        C2[Transformm into Fact and Dimension]
+        C1 --> C2        
     end
 
 ```
