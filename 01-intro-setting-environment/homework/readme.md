@@ -316,11 +316,30 @@ Now check the python modules that are installed ( use ```pip list``` ).
 
 What is version of the package *wheel* ?
 
+## Answer
+```bash
+$ docker run -it --entrypoint bash python:3.9 
+
+root@61fde1e3a57d:/# pip list
+Package    Version
+---------- -------
+pip        23.0.1
+setuptools 58.1.0
+wheel      0.44.0
+
+[notice] A new release of pip is available: 23.0.1 -> 24.3.1
+[notice] To update, run: pip install --upgrade pip
+root@61fde1e3a57d:/# exit
+exit
+```
+
 - 0.42.0
 - 1.0.0
 - 23.0.1
 - 58.1.0
 
+New entry
+-  **0.44.0 ☑️**
 
 # Prepare Postgres
 
@@ -331,7 +350,7 @@ We'll use the green taxi trips from September 2019:
 
 You will also need the dataset with zones:
 
-```wget https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv```
+```wget https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv```
 
 Download this data and put it into Postgres (with jupyter notebooks or with a pipeline)
 
