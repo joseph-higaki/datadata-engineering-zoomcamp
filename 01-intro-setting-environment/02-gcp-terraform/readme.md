@@ -2,5 +2,6 @@
 
 [GCP Setup](./01-gcp/readme.md)
 
-## Terraform Setup
+## Terraform 
 
+[Terraform](./02-terraform/readme.md)

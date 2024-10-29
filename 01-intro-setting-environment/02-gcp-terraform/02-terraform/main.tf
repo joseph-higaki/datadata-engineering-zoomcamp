@@ -8,14 +8,23 @@ terraform {
 }
 
 provider "google" {
-  project = "de-zoomcamp-jhigaki-course" 
+  project = var.project
   region = "europe-southwest1"
-  credentials = "/workspaces/data-engineering-zoomcamp/.gcp.auth/de-zoomcamp-jhigaki-course-68ab014c1efe.json"
+  credentials = var.credentials
 }
 
+resource "google_bigquery_dataset" "demo_dataset" {
+  dataset_id                  = var.bq_dataset_name
+  friendly_name               = "Demo Dataset Friendly Name"
+  description                 = "Demo Dataset Longer description"
+  location                    = var.location
+  delete_contents_on_destroy = "true"
+}
+
+
 resource "google_storage_bucket" "demo-joseph-auto-expire-bucket" {
-  name          = "de-zoomcamp-jhigaki-course-demo-joseph-auto-expire-bucket"
-  location      = "europe-southwest1"
+  name          = var.gcs_bucket_name
+  location      = var.location
   force_destroy = true
 
   lifecycle_rule {

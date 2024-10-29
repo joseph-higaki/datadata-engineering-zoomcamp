@@ -14,7 +14,7 @@
 		"POSH_THEME": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/clean-detailed.omp.json",
   
 		// Override me with your own timezone:
-		"TZ": "America/Moncton",
+		"TZ": "Europe/Madrid",
 		// Use one of the "TZ database name" entries from:
 		// https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   
@@ -101,7 +101,9 @@
 				"akamud.vscode-theme-onedark",
 				"ms-vscode-remote.remote-containers",
 				"PKief.material-icon-theme",
-				"GitHub.github-vscode-theme"
+				"GitHub.github-vscode-theme",
+				"bierner.markdown-preview-github-styles",
+				"hashicorp.terraform"
 			]
 		}
 	},
