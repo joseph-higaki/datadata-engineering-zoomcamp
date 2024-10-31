@@ -68,3 +68,32 @@ Result here [1-airflow-initial-docker-compose-up-airflow-init.txt](01-airflow-in
 
 ## Running Airflow
 `docker compose up`
+
+
+Errors
+
+## Setting AIRFLOW_UID
+
+`echo -e "AIRFLOW_UID=$(id -u)" > .env`
+My running Id in the container is vscode (1000)
+
+so the `.env` file contains
+```
+AIRFLOW_UID=1000
+```
+
+## Try again
+
+`docker compose up airflow-init | tee docker-compose-up-airflow-init.txt`
+
+`docker compose up | tee docker-compose-up-airflow-init.txt`
+
+Success
+
+
+## Next -
+ configure GCS cloud 
+ get rid of pg warnings rooot? 
+ create dags
+ https://www.youtube.com/watch?v=9ksX9REfL8w&list=PL3MmuxUbc_hKVX8VnwWCPaWlIHf1qmg8s&index=6 
+

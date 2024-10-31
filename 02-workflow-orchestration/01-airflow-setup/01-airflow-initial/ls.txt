@@ -1,0 +1,11 @@
+00.1.docker-compose-up-airflow-init.sh
+00.2.docker-compose-up.sh
+01.1.docker-compose-up-airflow-init.sh
+01.2.docker-compose-up.sh
+airflow_postgresql_data
+config
+dags
+docker-compose.yaml
+logs
+log.txt
+plugins
