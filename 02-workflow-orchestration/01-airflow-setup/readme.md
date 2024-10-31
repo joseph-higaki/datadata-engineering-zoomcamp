@@ -63,3 +63,8 @@ services:
 ## Initialize the database
 
 `docker compose up airflow-init`
+
+Result here [1-airflow-initial-docker-compose-up-airflow-init.txt](01-airflow-initial-docker-compose-up-airflow-init.txt)
+
+## Running Airflow
+`docker compose up`

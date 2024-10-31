@@ -1,0 +1,60 @@
+Attaching to airflow-init-1
+airflow-init-1  | 
+airflow-init-1  | [1;33mWARNING!!!: AIRFLOW_UID not set![0m
+airflow-init-1  | If you are on Linux, you SHOULD follow the instructions below to set 
+airflow-init-1  | AIRFLOW_UID environment variable, otherwise files will be owned by root.
+airflow-init-1  | For other operating systems you can get rid of the warning with manually created .env file:
+airflow-init-1  |     See: https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html#setting-the-right-airflow-user
+airflow-init-1  | 
+airflow-init-1  | 
+airflow-init-1  | DB: postgresql+psycopg2://airflow:***@postgres/airflow
+airflow-init-1  | Performing upgrade to the metadata database postgresql+psycopg2://airflow:***@postgres/airflow
+airflow-init-1  | [2024-10-31T17:39:47.705+0000] {migration.py:215} INFO - Context impl PostgresqlImpl.
+airflow-init-1  | [2024-10-31T17:39:47.706+0000] {migration.py:218} INFO - Will assume transactional DDL.
+airflow-init-1  | [2024-10-31T17:39:47.711+0000] {migration.py:215} INFO - Context impl PostgresqlImpl.
+airflow-init-1  | [2024-10-31T17:39:47.711+0000] {migration.py:218} INFO - Will assume transactional DDL.
+airflow-init-1  | [2024-10-31T17:39:47.713+0000] {db.py:1674} INFO - Creating tables
+airflow-init-1  | Database migrating done!
+airflow-init-1  | airflow already exist in the db
+airflow-init-1  | 2.10.2
+[Kairflow-init-1 exited with code 0
+Attaching to airflow-init-1
+airflow-init-1  | 
+airflow-init-1  | [1;33mWARNING!!!: AIRFLOW_UID not set![0m
+airflow-init-1  | If you are on Linux, you SHOULD follow the instructions below to set 
+airflow-init-1  | AIRFLOW_UID environment variable, otherwise files will be owned by root.
+airflow-init-1  | For other operating systems you can get rid of the warning with manually created .env file:
+airflow-init-1  |     See: https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html#setting-the-right-airflow-user
+airflow-init-1  | 
+airflow-init-1  | 
+airflow-init-1  | DB: postgresql+psycopg2://airflow:***@postgres/airflow
+airflow-init-1  | Performing upgrade to the metadata database postgresql+psycopg2://airflow:***@postgres/airflow
+airflow-init-1  | [2024-10-31T17:46:29.709+0000] {migration.py:215} INFO - Context impl PostgresqlImpl.
+airflow-init-1  | [2024-10-31T17:46:29.712+0000] {migration.py:218} INFO - Will assume transactional DDL.
+airflow-init-1  | [2024-10-31T17:46:29.717+0000] {migration.py:215} INFO - Context impl PostgresqlImpl.
+airflow-init-1  | [2024-10-31T17:46:29.717+0000] {migration.py:218} INFO - Will assume transactional DDL.
+airflow-init-1  | [2024-10-31T17:46:29.719+0000] {db.py:1674} INFO - Creating tables
+airflow-init-1  | Database migrating done!
+airflow-init-1  | airflow already exist in the db
+airflow-init-1  | 2.10.2
+[Kairflow-init-1 exited with code 0
+Attaching to airflow-init-1
+airflow-init-1  | 
+airflow-init-1  | [1;33mWARNING!!!: AIRFLOW_UID not set![0m
+airflow-init-1  | If you are on Linux, you SHOULD follow the instructions below to set 
+airflow-init-1  | AIRFLOW_UID environment variable, otherwise files will be owned by root.
+airflow-init-1  | For other operating systems you can get rid of the warning with manually created .env file:
+airflow-init-1  |     See: https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html#setting-the-right-airflow-user
+airflow-init-1  | 
+airflow-init-1  | 
+airflow-init-1  | DB: postgresql+psycopg2://airflow:***@postgres/airflow
+airflow-init-1  | Performing upgrade to the metadata database postgresql+psycopg2://airflow:***@postgres/airflow
+airflow-init-1  | [2024-10-31T17:47:58.548+0000] {migration.py:215} INFO - Context impl PostgresqlImpl.
+airflow-init-1  | [2024-10-31T17:47:58.549+0000] {migration.py:218} INFO - Will assume transactional DDL.
+airflow-init-1  | [2024-10-31T17:47:58.553+0000] {migration.py:215} INFO - Context impl PostgresqlImpl.
+airflow-init-1  | [2024-10-31T17:47:58.554+0000] {migration.py:218} INFO - Will assume transactional DDL.
+airflow-init-1  | [2024-10-31T17:47:58.555+0000] {db.py:1674} INFO - Creating tables
+airflow-init-1  | Database migrating done!
+airflow-init-1  | airflow already exist in the db
+airflow-init-1  | 2.10.2
+[Kairflow-init-1 exited with code 0
