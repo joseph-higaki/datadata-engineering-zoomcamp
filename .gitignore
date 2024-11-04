@@ -9,3 +9,4 @@
 **.terraform.lock.*
 **logs/
 **.env
+**google_credentials.json
