@@ -177,6 +177,57 @@ DAG is reflected there automatically, as DAG folder is mounted
 * See log
 ![alt text](../../_resources/02-workflow-orchestration/01-airflow-setup/readme.md/image-4.png)
 
+### Test GCS
+
+Error:
+```log
+  raise exceptions.DefaultCredentialsError(_CLOUD_SDK_MISSING_CREDENTIALS)
+google.auth.exceptions.DefaultCredentialsError: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+```
+
+Open bash to the airflow 
+![alt text](../../_resources/02-workflow-orchestration/01-airflow-setup/readme.md/image-6.png)
+
+`docker exec -it a01e5b95ed52 /bin/bash`
+
+Changes are not applied 
+- Credentials folder not there
+- env var GOOGLE_APPLICATION_CREDENTIALS not set
+
+![alt text](../../_resources/02-workflow-orchestration/01-airflow-setup/readme.md/image-5.png)
+
+Let's rebuild the airflow instance
+
+
+***Second Attempt***
+```log
+ File "/home/airflow/.local/lib/python3.12/site-packages/google/auth/_default.py", line 114, in load_credentials_from_file
+    raise exceptions.DefaultCredentialsError(
+google.auth.exceptions.DefaultCredentialsError: File /opt/***/credentials/google_credentials.json was not found.
+```
+
+Let's check  airflow instance
+
+`docker exec -it 5f61d49cb531 /bin/bash`
+
+`echo $GOOGLE_APPLICATION_CREDENTIALS`
+
+I mounted the wrong credentials folder (plugins into docker.credentials)
+FIxed, rebuilt:  **SUCCESS**
+
+![alt text](../../_resources/02-workflow-orchestration/01-airflow-setup/readme.md/image-7.png)
+
+
+Add to devcontainer.requirements
+`apache-airflow-providers-google`
+
+![alt text](../../_resources/02-workflow-orchestration/01-airflow-setup/readme.md/image-8.png)
+*
+*
+*
+*
+*
+*
  create dags
  https://www.youtube.com/watch?v=9ksX9REfL8w&list=PL3MmuxUbc_hKVX8VnwWCPaWlIHf1qmg8s&index=6 
 

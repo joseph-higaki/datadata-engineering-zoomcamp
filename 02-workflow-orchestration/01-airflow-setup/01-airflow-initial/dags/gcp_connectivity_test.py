@@ -1,8 +1,17 @@
 from datetime import datetime
 from airflow import DAG
-from google.cloud import storage
+from google.cloud import storage, bigquery
 from airflow.operators.python import PythonOperator
+from airflow.providers.google.cloud.operators.bigquery import BigQueryExecuteQueryOperator
+from airflow.providers.google.cloud.operators.gcs import GCSListObjectsOperator
 import logging
+
+def test_bigquery_python():
+    """Test BigQuery connectivity using Python client"""
+    client = bigquery.Client()
+    datasets = list(client.list_datasets(max_results=5))
+    print("Successfully connected to BigQuery!")
+    print(f"First 5 datasets in project: {[dataset.dataset_id for dataset in datasets]}")
 
 
 def test_gcs_python():
@@ -28,10 +37,23 @@ with DAG(
     catchup=False,
     tags=['test']
 ) as dag:    
+    
      # Test GCS using Python client
     test_gcs_python_task = PythonOperator(
         task_id='test_gcs_python',
-        python_callable=hello_world
+        python_callable=test_gcs_python
+    )
+     # Test BigQuery using operator
+    test_bq_operator = BigQueryExecuteQueryOperator(
+        task_id='test_bq_operator',
+        sql='SELECT 1',
+        use_legacy_sql=False,
     )
 
-test_gcs_python_task
+    # Test BigQuery using Python client
+    test_bq_python_task = PythonOperator(
+        task_id='test_bigquery_python',
+        python_callable=test_bigquery_python
+    )
+
+    test_gcs_python_task >> [test_bq_operator, test_bq_python_task]

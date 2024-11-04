@@ -72,11 +72,23 @@ x-airflow-common:
     # The following line can be used to set a custom config file, stored in the local config folder
     # If you want to use it, outcomment it and replace airflow.cfg with the name of your config file
     # AIRFLOW_CONFIG: '/opt/airflow/config/airflow.cfg'
+    # Setting up Google Cloud
+    GOOGLE_APPLICATION_CREDENTIALS: /opt/airflow/credentials/google_credentials.json
+    # not sure what it does, I will not enable it until it fails
+    #AIRFLOW_CONN_GOOGLE_CLOUD_DEFAULT: 'google-cloud-platform://?extra__google_cloud_platform__key_path=/opt/airflow/credentials/google_credentials.json'
+    #
+    GCP_PROJECT_ID: '${GCP_PROJECT_ID}'
+    GCP_GCS_BUCKET: ${GCP_GCS_BUCKET}
+
   volumes:
     - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
     - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
     - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
     - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
+    #Setting up application / airflow specific cloud credentials
+    - ${AIRFLOW_PROJ_DIR:-.}/credentials:/opt/airflow/credentials:ro
+    # requirements base and task specific
+    - ${AIRFLOW_PROJ_DIR:-.}/requirements:/opt/airflow/requirements
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on    
