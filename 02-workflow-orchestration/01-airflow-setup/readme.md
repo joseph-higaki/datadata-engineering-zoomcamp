@@ -117,7 +117,65 @@ Let's see if I have any permission problems down the line
 
 ##  configure GCS cloud 
 
+### Mounted Additional Credentials folder
+- ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/credentials:ro
 
+
+### GOOGLE_APPLICATION_CREDENTIALS
+POinting to `google_credentials.json` at Creedentials folder
+
+### AIRFLOW_CONN_GOOGLE_CLOUD_DEFAULT
+Not sure why?
+
+### GCP Project and Bucket
+Set up as variables in `.env` and referrenced at [`docker-compose.airflow-common`](./01-airflow-initial/docker-compose.yaml)
+```env
+GCP_PROJECT_ID=
+GCP_GCS_BUCKET=
+```
+
+### Requirements mount
+`- ${AIRFLOW_PROJ_DIR:-.}/requirements:/opt/airflow/requirements`
+
+Aiming to do this
+
+```bash
+├── dags/
+│   └── nyc_taxi_dag.py
+├── requirements/
+│   ├── base.txt
+│   └── task_specific/
+│       └── taxi_requirements.txt
+├── credentials/
+│   └── google_credentials.json
+├── plugins/
+├── docker-compose.yaml
+└── Dockerfile
+```
+
+### Creating a Test DAG
+
+I just added apache-airflow to the [requirements file](../../.devcontainer/requirements.txt) of the devContainer
+
+### Debug local (fail)
+
+I couldnt debug it locally, it just served me to hace pyPalance not to complain
+
+### Debug On DOcker Airflow
+
+DAG is reflected there automatically, as DAG folder is mounted
+
+* Go to DAG runs 
+![alt text](../../_resources/02-workflow-orchestration/01-airflow-setup/readme.md/image-1.png)
+
+* Select Task for details
+![alt text](../../_resources/02-workflow-orchestration/01-airflow-setup/readme.md/image-2.png)
+
+* Select Logs once in the task RUN
+![alt text](../../_resources/02-workflow-orchestration/01-airflow-setup/readme.md/image-3.png)
+
+* See log
+![alt text](../../_resources/02-workflow-orchestration/01-airflow-setup/readme.md/image-4.png)
 
  create dags
  https://www.youtube.com/watch?v=9ksX9REfL8w&list=PL3MmuxUbc_hKVX8VnwWCPaWlIHf1qmg8s&index=6 
