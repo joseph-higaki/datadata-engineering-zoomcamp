@@ -80,9 +80,11 @@
 			"terminal.integrated.tabs.defaultIcon": "terminal-powershell",
 			"terminal.integrated.tabs.defaultColor": "terminal.ansiBlue",
 			"workbench.colorTheme": "GitHub Dark Dimmed",
-			"workbench.iconTheme": "material-icon-theme"
+			"workbench.iconTheme": "material-icon-theme",
+			//pasted images will go into resources folder
+			"markdown.copyFiles.destination": {
+				"*.md": "${documentWorkspaceFolder}/_resources/${documentRelativeFilePath}/${fileName}"
 			},
-
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
 				"actboy168.tasks",
