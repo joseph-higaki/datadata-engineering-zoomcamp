@@ -75,7 +75,7 @@ x-airflow-common:
     # Setting up Google Cloud
     GOOGLE_APPLICATION_CREDENTIALS: /opt/airflow/credentials/google_credentials.json
     # not sure what it does, I will not enable it until it fails
-    #AIRFLOW_CONN_GOOGLE_CLOUD_DEFAULT: 'google-cloud-platform://?extra__google_cloud_platform__key_path=/opt/airflow/credentials/google_credentials.json'
+    AIRFLOW_CONN_GOOGLE_CLOUD_DEFAULT: 'google-cloud-platform://?extra__google_cloud_platform__key_path=/opt/airflow/credentials/google_credentials.json'
     #
     GCP_PROJECT_ID: '${GCP_PROJECT_ID}'
     GCP_GCS_BUCKET: ${GCP_GCS_BUCKET}

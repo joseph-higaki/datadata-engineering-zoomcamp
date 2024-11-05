@@ -38,6 +38,14 @@ with DAG(
     tags=['test']
 ) as dag:    
     
+     # Test GCS using operator
+    test_gcs_operator = GCSListObjectsOperator(
+        task_id='test_gcs_operator',
+        bucket='01-initial-setup-bucket',  # Replace with your bucket
+        prefix='',  # Empty prefix to list root
+        delimiter='/'  # List only root level
+    )
+
      # Test GCS using Python client
     test_gcs_python_task = PythonOperator(
         task_id='test_gcs_python',
@@ -56,4 +64,5 @@ with DAG(
         python_callable=test_bigquery_python
     )
 
-    test_gcs_python_task >> [test_bq_operator, test_bq_python_task]
+    test_gcs_python_task >> test_gcs_operator >> [test_bq_operator, test_bq_python_task]
+

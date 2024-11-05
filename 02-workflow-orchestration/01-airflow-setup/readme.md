@@ -222,6 +222,17 @@ Add to devcontainer.requirements
 `apache-airflow-providers-google`
 
 ![alt text](../../_resources/02-workflow-orchestration/01-airflow-setup/readme.md/image-8.png)
+
+** setup ** 
+AIRFLOW_CONN_GOOGLE_CLOUD_DEFAULT: 'google-cloud-platform://?extra__google_cloud_platform__key_path=/opt/airflow/credentials/google_credentials.json'`
+
+And now all three tasks work
+![alt text](../../_resources/02-workflow-orchestration/01-airflow-setup/readme.md/image-9.png)
+
+![alt text](../../_resources/02-workflow-orchestration/01-airflow-setup/readme.md/image-10.png)
+
+https://airflow.apache.org/docs/apache-airflow/stable/howto/operator/python.html
+
 *
 *
 *
