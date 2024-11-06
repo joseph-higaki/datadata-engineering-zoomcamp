@@ -23,13 +23,11 @@ path_temp_local_dataset_file = f"{PATH_TO_LOCAL_HOME_STORAGE}/{os.path.basename(
 
 def get_basename(file_path_or_uri):
     # Extract the base name from the path or URI
-    base_name = os.path.basename(file_path_or_uri)
-    
+    base_name = os.path.basename(file_path_or_uri)    
     # Remove all extensions
     base_name = os.path.splitext(base_name)[0]
     while '.' in base_name:
-        base_name = os.path.splitext(base_name)[0]
-    
+        base_name = os.path.splitext(base_name)[0]    
     return base_name
 
 
