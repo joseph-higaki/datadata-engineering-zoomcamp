@@ -16,4 +16,5 @@ pyspark
 confluent-kafka==1.9.2
 numpy==1.26.3
 apache-airflow
+jupyter
 apache-airflow-providers-google
