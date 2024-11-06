@@ -1,73 +1,37 @@
-
 from airflow import DAG
+import os
 #from airflow.decorators import dag, task
-import logging
+
+from ingestion_gcs import hello, format_to_parquet, local_to_gcs
+
 from datetime import datetime
 from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
 from airflow.providers.google.cloud.operators.bigquery import BigQueryCreateExternalTableOperator
-import os
-import pyarrow.csv as pv
-import pyarrow.parquet as pq
-from google.cloud import storage
+
 
 PROJECT_ID = os.environ.get("GCP_PROJECT_ID")
 BUCKET_ID = os.environ.get("GCP_GCS_BUCKET")
-dataset_file = "yellow_tripdata_2021-01.csv.gz"
-source_dataset_url = f"https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/{dataset_file}"
+DATASET_ID = os.environ.get("GCP_BQ_DATASET")
+PATH_TO_LOCAL_HOME_STORAGE = f"{os.environ.get("AIRFLOW_HOME", "/opt/airflow/")}/raw_data"
 
-#source_dataset_url = f"https://d37ci6vzurychx.cloudfront.net/trip-data/{dataset_file}"
-#dataset_file = "yellow_tripdata_2021-01.parquet"
 
-path_to_local_home_storage = f"{os.environ.get("AIRFLOW_HOME", "/opt/airflow/")}/raw_data"
-path_temp_local_dataset_file = f"{path_to_local_home_storage}/{dataset_file}"
-dataset_parquetfile = lambda srcfile : srcfile.replace('.csv.gz', '.parquet')
+#source_dataset_url = f"https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz"
+source_dataset_url = "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-02.parquet"
 
-def hello():
-    logger = logging.getLogger("data_ingestion_gcs_simpleXcom_dag")
-    logger.info("Starting  test")
-    print(f"hello world{1/1}")
-    logger.info("Finished test")
+path_temp_local_dataset_file = f"{PATH_TO_LOCAL_HOME_STORAGE}/{os.path.basename(source_dataset_url)}"
 
-def format_to_parquet(full_path_src_file):
-    logger = logging.getLogger("data_ingestion_gcs_simpleXcom_dag")
-    logger.info(f"format_to_parquet: {full_path_src_file}")
-        
-    if not (full_path_src_file.endswith('.csv') or full_path_src_file.endswith('.csv.gz')) :
-        logger.error(f"Unkown file format extension {full_path_src_file}")        
-    else:
-        table = pv.read_csv(full_path_src_file)
+def get_basename(file_path_or_uri):
+    # Extract the base name from the path or URI
+    base_name = os.path.basename(file_path_or_uri)
+    
+    # Remove all extensions
+    base_name = os.path.splitext(base_name)[0]
+    while '.' in base_name:
+        base_name = os.path.splitext(base_name)[0]
+    
+    return base_name
 
-        # Just replace .csv.gz for .parquet
-        full_path_output_parquet_file = dataset_parquetfile(full_path_src_file)
-        pq.write_table(table, full_path_output_parquet_file)
-        logger.info(f"parquet written {full_path_output_parquet_file}")         
-        os.remove(full_path_src_file)
-        logger.info(f"removed csv file {full_path_src_file}")
-        return full_path_output_parquet_file
-
-def local_to_gcs(bucket_name: str, **kwargs):
-    logger = logging.getLogger("data_ingestion_gcs_simpleXcom_dag")
-    logger.info("local_to_gcs")
-    #logger.info(f"kwargs: {kwargs}")    
-    #logger.info(f"ti: {kwargs['ti']}")
-    task_instance = kwargs['ti']
-
-    local_filename = task_instance.xcom_pull(task_ids="format_to_parquet_task", key="return_value")
-    logger.info(f"local_filename: {local_filename}")    
-
-    destination_blob_name = os.path.basename(local_filename)
-    logger.info(f"destination_blob_name: {destination_blob_name}")       
-
-    storage_client = storage.Client()
-    bucket = storage_client.bucket(bucket_name)
-    blob = bucket.blob(destination_blob_name)
-    generation_match_precondition = 0
-    blob.upload_from_filename(local_filename, if_generation_match=generation_match_precondition)
-    logger.info(f"uploaded {local_filename} succesfully to {bucket_name}")    
-    os.remove(local_filename)
-    logger.info(f"removed csv file {local_filename}")    
-    return f"gs://{bucket_name}/{destination_blob_name}"
 
 with DAG(
     'data_ingestion_gcs_simpleXcom',
@@ -102,8 +66,7 @@ with DAG(
         python_callable=local_to_gcs,
         #provide_context=True,  # Enable context passing
         op_kwargs={
-            "bucket_name":BUCKET_ID,
-            "destination_blob_name": dataset_parquetfile(dataset_file)            
+            "bucket_name":BUCKET_ID            
         }
     )
 
@@ -112,8 +75,8 @@ with DAG(
         table_resource={
             "tableReference": {
                 "project_id": PROJECT_ID,
-                "datasetId": "dataset_1",
-                "tableId": "external_table_xcom"
+                "datasetId": DATASET_ID,
+                "tableId": get_basename(source_dataset_url)
             },
             "externalDataConfiguration":{
                 "sourceFormat": "PARQUET",

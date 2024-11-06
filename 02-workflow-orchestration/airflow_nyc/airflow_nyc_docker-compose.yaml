@@ -79,6 +79,7 @@ x-airflow-common:
     #
     GCP_PROJECT_ID: '${GCP_PROJECT_ID}'
     GCP_GCS_BUCKET: ${GCP_GCS_BUCKET}
+    GCP_BQ_DATASET: ${GCP_BQ_DATASET}
 
   volumes:
     - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
