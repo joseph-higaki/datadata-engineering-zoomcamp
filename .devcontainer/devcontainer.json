@@ -105,7 +105,8 @@
 				"PKief.material-icon-theme",
 				"GitHub.github-vscode-theme",
 				"bierner.markdown-preview-github-styles",
-				"hashicorp.terraform"
+				"hashicorp.terraform",
+				"dvirtz.parquet-viewer"
 			]
 		}
 	},
