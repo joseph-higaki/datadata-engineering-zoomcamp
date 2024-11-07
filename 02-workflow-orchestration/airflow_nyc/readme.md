@@ -34,3 +34,22 @@ XCom of task has a `return_value`:
 
 ## DAG Task XCOM Blob Backend
 exchange fillename, use GCS blob provider
+
+
+## DAG with no Parameter
+
+`airflow dags trigger data_ingestion_gcs_simpleXcom`
+
+## DAG with Parameter
+
+airflow dags trigger data_ingestion_gcs_simpleXcom --conf '{"source_dataset_url": "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-04.parquet"}'
+
+something wrhon with the pram
+
+check local_togcs_task
+
+
+[2024-11-06, 15:54:12 UTC] {ingestion_gcs.py:53} INFO - uploaded /opt/***/raw_data/https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-04.parquet succesfully to 01-initial-setup-bucket
+[2024-11-06, 15:54:12 UTC] {ingestion_gcs.py:55} INFO - removed csv file /opt/***/raw_data/https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-04.parquet
+[2024-11-06, 15:54:12 UTC] {python.py:240} INFO - Done. Returned value was: gs://01-initial-setup-bucket/yellow_tripdata_2021-04.parquet
+[2024-11-06, 15:54:12 UTC] {taskinstance.py:340} ▶ Post task execution logs

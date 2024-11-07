@@ -17,9 +17,9 @@ PATH_TO_LOCAL_HOME_STORAGE = f"{os.environ.get("AIRFLOW_HOME", "/opt/airflow/")}
 
 
 #source_dataset_url = f"https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz"
-source_dataset_url = "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-02.parquet"
+#source_dataset_url = "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2021-03.parquet"
 
-path_temp_local_dataset_file = f"{PATH_TO_LOCAL_HOME_STORAGE}/{os.path.basename(source_dataset_url)}"
+path_temp_local_dataset_file = lambda x: f"{PATH_TO_LOCAL_HOME_STORAGE}/{os.path.basename(x)}"
 
 def get_basename(file_path_or_uri):
     # Extract the base name from the path or URI
@@ -39,6 +39,8 @@ with DAG(
     tags=['test', 'data_ingestion_gcs', 'nyc']
 ) as dag:
     
+    source_dataset_url = "{{dag_run.conf['source_dataset_url']}}"
+    
      # Test GCS using Python client
     hello_task = PythonOperator(
         task_id="hello_task",
@@ -48,14 +50,14 @@ with DAG(
     download_dataset_task = BashOperator(
         task_id="download_dataset_task",
         #bash_command=f"echo {source_dataset_url} create-dirs output {path_temp_local_dataset_file}"        
-        bash_command=f"curl -sSL {source_dataset_url} --create-dirs --output {path_temp_local_dataset_file}"
+        bash_command=f"curl -sSL {source_dataset_url} --create-dirs --output {path_temp_local_dataset_file(source_dataset_url)}"
     )
 
     format_to_parquet_task = PythonOperator(
         task_id="format_to_parquet_task",        
         python_callable=format_to_parquet,        
         op_kwargs={
-            "full_path_src_file":path_temp_local_dataset_file
+            "full_path_src_file":path_temp_local_dataset_file(source_dataset_url)
         }
     )
 
