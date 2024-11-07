@@ -9,8 +9,7 @@ get_dataset_parquetfile = lambda srcfile : srcfile.replace('.csv.gz', '.parquet'
 
 
 def format_to_parquet(full_path_src_file, **kwargs):
-    logger = logging.getLogger(kwargs["dag"].dag_id)
-    raise Exception("stop, hammer time")    
+    logger = logging.getLogger(kwargs["dag"].dag_id)    
     logger.info(f"format_to_parquet: {full_path_src_file}")
     # parquet fileName
     full_path_output_parquet_file = get_dataset_parquetfile(full_path_src_file)
