@@ -233,12 +233,75 @@ And now all three tasks work
 
 https://airflow.apache.org/docs/apache-airflow/stable/howto/operator/python.html
 
-*
-*
-*
-*
-*
-*
- create dags
- https://www.youtube.com/watch?v=9ksX9REfL8w&list=PL3MmuxUbc_hKVX8VnwWCPaWlIHf1qmg8s&index=6 
+
+## How DAGs work with `with` statements
+
+
+### Implicit DAG Assignment with `DagContext`
+
+When you use the `with` statement in Airflow, it leverages the `DagContext` to manage the current DAG context. Here's how it works:
+
+1.  Entering the `with` Block:
+
+    -   When you enter a `with dag:` block, the `DagContext` registers the DAG as the current active DAG.
+    -   This is done using the `__enter__` method of the `DAG` class, which calls `DagContext.push_context_managed_dag(self)`.
+2.  DagContext Mechanism:
+
+    -   `DagContext` is a singleton class that maintains a stack of DAGs. This stack keeps track of the current active DAG.
+    -   When you create an operator inside the `with` block, the operator's `__init__` method calls `DagContext.get_current_dag()` to retrieve the current active DAG from the stack.
+3.  Operator Initialization:
+
+    -   In the `BaseOperator.__init__` method, the line `dag = dag or DagContext.get_current_dag()` ensures that if no `dag` is explicitly passed, it will use the current DAG from the `DagContext`.
+    -   This allows the operator to be implicitly associated with the current DAG without needing to pass the `dag` parameter explicitly.
+
+### Example Breakdown
+
+Here's a simplified example to illustrate this:
+
+Python
+
+```python
+from airflow import DAG
+from airflow.operators.bash import BashOperator
+from datetime import datetime
+
+dag = DAG(
+    'example_dag',
+    start_date=datetime(2024, 6, 1),
+    schedule_interval="0 21 1 * *",
+    catchup=False
+)
+
+with dag:
+    task = BashOperator(
+        task_id='example_task',
+        bash_command='echo "Hello, World!"'
+    )
+
+```
+
+
+-   Entering the `with` Block:
+
+    -   `DagContext.push_context_managed_dag(dag)` is called, pushing `dag` onto the context stack.
+-   Creating the Operator:
+
+    -   `BashOperator.__init__` is called.
+    -   Inside `__init__`, `dag = dag or DagContext.get_current_dag()` retrieves the current DAG from the `DagContext` stack.
+    -   The operator is then associated with `dag`.
+
+### DagContext Explained
+
+`DagContext` is a helper class that manages the current DAG context. Here's a more detailed look:
+
+-   Stack Management:
+
+    -   `DagContext` maintains a stack of DAGs. When you enter a `with` block, the DAG is pushed onto the stack. When you exit the block, the DAG is popped from the stack.
+-   Methods:
+
+    -   `push_context_managed_dag(dag)`: Pushes a DAG onto the stack.
+    -   `pop_context_managed_dag()`: Pops the top DAG from the stack.
+    -   `get_current_dag()`: Returns the current active DAG (the top of the stack).
+
+This mechanism ensures that operators created within a `with` block are automatically associated with the correct DAG, simplifying the DAG definition process.
 
