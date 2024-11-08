@@ -308,5 +308,7 @@ This mechanism ensures that operators created within a `with` block are automati
 
 
 See [Understanding Dag Semantics](./01-airflow-initial/dags/dag_semantics.py)
-
 ![alt text](../../_resources/02-workflow-orchestration/01-airflow-setup/readme.md/image-11.png)
+
+[Dag Params Semantics](./01-airflow-initial/dags/dag_container_simple_param.py)
+[Dag Runtime Params Semantics](./01-airflow-initial/dags/dag_container_runtime_param.py)
