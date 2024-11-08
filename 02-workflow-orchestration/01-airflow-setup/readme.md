@@ -305,3 +305,8 @@ with dag:
 
 This mechanism ensures that operators created within a `with` block are automatically associated with the correct DAG, simplifying the DAG definition process.
 
+
+
+See [Understanding Dag Semantics](./01-airflow-initial/dags/dag_semantics.py)
+
+![alt text](../../_resources/02-workflow-orchestration/01-airflow-setup/readme.md/image-11.png)
