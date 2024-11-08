@@ -101,3 +101,7 @@ and produced this:
 /workspaces/data-engineering-zoomcamp/pip_freeze_20241107_01.txt
 
 ***********************/
+
+
+MUltiple cursros:
+https://youtu.be/s2U8MWJH5xA?si=BYQnJfc0I0lxCIx7&t=3203
