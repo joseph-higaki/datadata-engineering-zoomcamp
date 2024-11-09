@@ -74,3 +74,13 @@ Remember to mount ./airflow so that we don't lose our work
 
 
 
+
+
+REally good
+
+DE Zoomcamp 2.3.3 - Ingesting Data to Local Postgres with Airflow
+https://www.youtube.com/watch?v=s2U8MWJH5xA
+
+
+Week #2 Homework Solution (Airflow)
+https://www.youtube.com/watch?v=-0xl4GtSugQ&list=PL3MmuxUbc_hKVX8VnwWCPaWlIHf1qmg8s&index=11

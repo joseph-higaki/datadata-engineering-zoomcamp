@@ -34,3 +34,10 @@ OPTIONS(
   ]
 )
 
+CREATE OR REPLACE EXTERNAL TABLE nyc_taxi.fhv_tripdata_2019
+OPTIONS(
+  format = 'parquet',
+  uris = [
+    'gs://01-initial-setup-bucket/fhv_tripdata_2019*.parquet'
+  ]
+)
