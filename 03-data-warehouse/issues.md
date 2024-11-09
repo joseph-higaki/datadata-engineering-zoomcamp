@@ -39,7 +39,7 @@ SELECT table_name, column_name, data_type
 
 
 It looks like I have to either:
-1. enforce the data types from columns when uploading it to GCS 
+1. [enforce the data types](https://github.com/ziritrion/dataeng-zoomcamp/blob/main/notes/extra1_preparing_data.md) from columns when uploading it to GCS 
 2. Exclude airport fee
 
-** For the sake of progress, now I'm going to exclude airport_fee
+**For the sake of progress, now I'm going to exclude airport_fee**
