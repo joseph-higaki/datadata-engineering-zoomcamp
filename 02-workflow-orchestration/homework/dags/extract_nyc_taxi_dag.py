@@ -73,7 +73,7 @@ def create_ingest_dag(
     
    download_file_task = BashOperator(
       task_id =  "download_file_task",      
-      #bash_command= f"echo {source_url_template} {DOWNLOADED_FILE_TEMPLATE}",
+      #bash_command= f"echo '{source_url_template} {downloaded_filename_template}'",
       bash_command=f"curl -sSLf {source_url_template} --create-dirs --output {downloaded_filename_template}",
       dag=the_dag
    )
@@ -81,16 +81,15 @@ def create_ingest_dag(
    remove_download_file_task = BashOperator(
        task_id =  "remove_download_file_task",
        #bash_command="echo {{ ds }}"
-       #bash_command=f"echo '{DOWNLOADED_FILE_TEMPLATE}'",
+       #bash_command=f"echo '{downloaded_filename_template}'",
        bash_command="rm -f " + downloaded_filename_template,
        dag=the_dag
     )
    
    remove_parquet_file_task = BashOperator(
        task_id =  "remove_parquet_file_task",
-       #bash_command="echo {{ ds }}"
-       bash_command="rm -f "+ "{{ task_instance.xcom_pull(task_ids='format_to_parquet_task', key='return_value') }}",
-       #bash_command=f"rm {downloaded_filename_template}",
+       #bash_command="echo {{ ds }}",
+       bash_command="rm -f "+ "{{ task_instance.xcom_pull(task_ids='format_to_parquet_task', key='return_value') }}",       
        dag=the_dag
     )
    
@@ -131,7 +130,10 @@ BUCKET_ID = os.environ.get("GCP_GCS_BUCKET")
 
 version = "1.0"
 trip_data_start_date = datetime(2019,2,1)
-trip_data_end_date = datetime(2021,7,1)
+# if not specified 21:00,
+# when executing jinja template {{day- 1}}
+#  will not grab the last month of the time span
+trip_data_end_date = datetime(2021,7,1,21,0,0,0)
 trip_data_schedule_interval = "0 21 1 * *"
 
 yellow_dag_test = create_ingest_dag(
@@ -148,16 +150,16 @@ yellow_dag_test = create_ingest_dag(
 )
 
 green_dag_test = create_ingest_dag(
-   dag_id="green_dag_test_"+version,
-   start_date=trip_data_start_date,
-   end_date=trip_data_end_date,
+   dag_id="green_dag_test_"+"2.8",
+   start_date=datetime(2022,2,1),
+   end_date=datetime(2023,1,1,21,0,0,0),
    schedule_interval=trip_data_schedule_interval,
    catchup=True,
    tags=['ingest', 'nyc_taxi', 'trip_data'],
    source_url_template=SOURCE_URL_TEMPLATE.format(trip_type="green"),
    downloaded_filename_template=DOWNLOADED_FILE_TEMPLATE.format(trip_type="green"),
    bucket_name=BUCKET_ID,
-   max_active_runs = 2
+   max_active_runs = 5
 )
 
 fhv_dag_test = create_ingest_dag(
