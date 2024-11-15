@@ -9,6 +9,7 @@ source as (
 renamed as (
 
     select
+        {{ dbt_utils.generate_surrogate_key(['vendorid', 'lpep_pickup_datetime']) }} as trip_id,
         vendorid,
         lpep_pickup_datetime,
         lpep_dropoff_datetime,
@@ -31,7 +32,11 @@ renamed as (
         congestion_surcharge
 
     from source
+    {% if var('is_test_run', default=true) %}
 
+    limit 100
+
+    {% endif %}
 )
 
 select * from renamed
