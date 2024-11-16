@@ -101,3 +101,6 @@ CREATE OR REPLACE EXTERNAL TABLE nyc_taxi_raw.fhv_tripdata_2020_11_external OPTI
 CREATE OR REPLACE EXTERNAL TABLE nyc_taxi_raw.fhv_tripdata_2020_12_external OPTIONS( format = 'parquet', uris = ['gs://01-initial-setup-bucket/fhv_tripdata_2020-12.parquet']);
 
 */
+
+
+CREATE OR REPLACE EXTERNAL TABLE nyc_taxi_raw.taxi_zone_lookup_external OPTIONS( format = 'parquet', uris = ['gs://01-initial-setup-bucket/taxi_zone_lookup_2020-12.parquet']);
