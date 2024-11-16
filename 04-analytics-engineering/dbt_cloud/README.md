@@ -34,15 +34,50 @@ Add Storage OBject Viewer
 1. standardize data types
 Using the approach of union all accross months with set formulas and casts for all months
 
+I will first list all columns
+```sql
+with 
+source as (    
+    {% for item in ['2019_01','2019_02'] %}
+        {% set table_name = 'yellow_tripdata_' +  item  + '_external' %}
+        select 
+            {{ dbt_utils.star(from=source('raw', table_name), quote_identifiers=False) }}          
+        from {{ source('raw', table_name) }}
+        {% if not loop.last %}
+            union all              
+        {% endif %}        
+    {% endfor %}
+)
+```
+
+used the regex 
+```bash
+^(.*),$
+{{ dbt.cast("$1", api.Column.translate_type("some_type")) }} as $1
+```
+to come up with yellow columns
+
+```sql
+{{ dbt.cast("VendorID", api.Column.translate_type("int")) }} as VendorID,
+{{ dbt.cast("tpep_pickup_datetime", api.Column.translate_type("timestamp")) }} as tpep_pickup_datetime,
+...
+```
+See macro with [yellow columns here](./macros/get_raw_yellow_tripdata_columns.sql)
+
+I will build the raw_yellow_tripdata_all as a materialized table 
+
 ## Staging
 
 
-1. Data Cleaning: 
-    1. Deduplication of records, find a key
-    
-    1. default values across months of single service
-    1. default values across services
-    1. Valid lookup values
+### Data Cleaning: 
+### Deduplication of records, find a key    
+Key: **the whole row**
+
+[Analysis here](./finding_yellowtripdata_key.md)
+
+1. default values across months of single service
+1. default values across services
+1. Valid lookup values
 
 ## Core
 1. Fact trip

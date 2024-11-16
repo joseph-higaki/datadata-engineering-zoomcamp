@@ -1,0 +1,91 @@
+/* Years of tables*/
+2019_01
+2019_02
+2019_03
+2019_04
+2019_05
+2019_06
+2019_07
+2019_08
+2019_09
+2019_10
+2019_11
+2019_12
+2020_01
+2020_02
+2020_03
+2020_04
+2020_05
+2020_06
+2020_07
+2020_08
+2020_09
+2020_10
+2020_11
+2020_12
+
+/* table names */
+/* - name: yellow_tripdata_2019_01_external */
+- name: yellow_tripdata_2019_01_external
+- name: yellow_tripdata_2019_02_external
+- name: yellow_tripdata_2019_03_external
+- name: yellow_tripdata_2019_04_external
+- name: yellow_tripdata_2019_05_external
+- name: yellow_tripdata_2019_06_external
+- name: yellow_tripdata_2019_07_external
+- name: yellow_tripdata_2019_08_external
+- name: yellow_tripdata_2019_09_external
+- name: yellow_tripdata_2019_10_external
+- name: yellow_tripdata_2019_11_external
+- name: yellow_tripdata_2019_12_external
+- name: yellow_tripdata_2020_01_external
+- name: yellow_tripdata_2020_02_external
+- name: yellow_tripdata_2020_03_external
+- name: yellow_tripdata_2020_04_external
+- name: yellow_tripdata_2020_05_external
+- name: yellow_tripdata_2020_06_external
+- name: yellow_tripdata_2020_07_external
+- name: yellow_tripdata_2020_08_external
+- name: yellow_tripdata_2020_09_external
+- name: yellow_tripdata_2020_10_external
+- name: yellow_tripdata_2020_11_external
+- name: yellow_tripdata_2020_12_external
+
+
+- name: green_tripdata_2019_01_external
+- name: green_tripdata_2019_02_external
+- name: green_tripdata_2019_03_external
+- name: green_tripdata_2019_04_external
+- name: green_tripdata_2019_05_external
+- name: green_tripdata_2019_06_external
+- name: green_tripdata_2019_07_external
+- name: green_tripdata_2019_08_external
+- name: green_tripdata_2019_09_external
+- name: green_tripdata_2019_10_external
+- name: green_tripdata_2019_11_external
+- name: green_tripdata_2019_12_external
+- name: green_tripdata_2020_01_external
+- name: green_tripdata_2020_02_external
+- name: green_tripdata_2020_03_external
+- name: green_tripdata_2020_04_external
+- name: green_tripdata_2020_05_external
+- name: green_tripdata_2020_06_external
+- name: green_tripdata_2020_07_external
+- name: green_tripdata_2020_08_external
+- name: green_tripdata_2020_09_external
+- name: green_tripdata_2020_10_external
+- name: green_tripdata_2020_11_external
+- name: green_tripdata_2020_12_external
+
+- name: fhv_tripdata_2019_01_external
+- name: fhv_tripdata_2019_02_external
+- name: fhv_tripdata_2019_03_external
+- name: fhv_tripdata_2019_04_external
+- name: fhv_tripdata_2019_05_external
+- name: fhv_tripdata_2019_06_external
+- name: fhv_tripdata_2019_07_external
+- name: fhv_tripdata_2019_08_external
+- name: fhv_tripdata_2019_09_external
+- name: fhv_tripdata_2019_10_external
+- name: fhv_tripdata_2019_11_external
+- name: fhv_tripdata_2019_12_external
