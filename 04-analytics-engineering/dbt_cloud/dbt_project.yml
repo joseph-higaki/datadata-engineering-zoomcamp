@@ -36,4 +36,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
-  nyc_taxi:    
+  nyc_taxi:
+    raw:
+      materialized: view
+    staging:
+      materialized: table
+    core:
+      materialized: table
+      
