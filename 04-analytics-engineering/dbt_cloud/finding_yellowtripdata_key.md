@@ -106,13 +106,13 @@ Example:
 
 ## Deduplication Strategy
 So for deduplication, we can wither do:
-1. Eliminate duplicated rows over `row_hash_value`
+1. **Eliminate duplicated rows over `row_hash_value`**
 2. Nothing and generate a surrogate key with `row_hash_value` + `row_number_by_row_hash_value`
 
 ## Counts
 |label|amount|Explanation|
 |-----|------|-----------|
 |`total_count`| 109 247 536| Amount of records at yellow trip data 2019- 2020            |
-|`duplicates_count`|13 000 | Records that are duplicate doing a full row comparison           |
+|`duplicates_count`<br>0.011%|13 000 | Records that are duplicate doing a full row comparison           |
 |`original_with_duplicates_count`|12 957 |  Records that are duplicate but are the remaining record `(row_number() == 1)`. Notice this is less than 13 00 because a single good record could be duplicated more than once         |
 |`original_count`|109 234 536| Record count after deleting `duplicates_count`            |
