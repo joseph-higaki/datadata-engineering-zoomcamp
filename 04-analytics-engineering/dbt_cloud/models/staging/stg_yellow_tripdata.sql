@@ -1,14 +1,13 @@
 with source as (
-    select * from {{ ref('raw_green_tripdata') }}    
+    select * from {{ ref('raw_yellow_tripdata') }}
 ),
 renamed_dedup as (
     select 
-        'green' as trip_type,
-        trip_type as trip_hail_type,
+        'yellow' as trip_type,
         row_hash_value,   
         VendorID as vendor_id,
-        lpep_pickup_datetime as pickup_datetime,
-        lpep_dropoff_datetime as dropoff_datetime,
+        tpep_pickup_datetime as pickup_datetime,
+        tpep_dropoff_datetime as dropoff_datetime,
         passenger_count as passenger_count,
         trip_distance as trip_distance,
         RatecodeID as rate_code_id,
@@ -20,11 +19,11 @@ renamed_dedup as (
         extra as extra_amount,
         mta_tax as mta_tax,
         tip_amount as tip_amount,
-        tolls_amount as tolls_amount,        
+        tolls_amount as tolls_amount,
         improvement_surcharge as improvement_surcharge,
         total_amount as total_amount,
-        congestion_surcharge as congestion_surcharge,        
-        ehail_fee as ehail_fee
+        congestion_surcharge as congestion_surcharge,
+        airport_fee as airport_fee
     from source
     where rn_hash = 1     
 ),

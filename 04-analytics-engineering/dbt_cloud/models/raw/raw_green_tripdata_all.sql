@@ -1,10 +1,10 @@
 with 
 source as (    
-    {% for item in get_year_month_load('yellow')  %}
-        {% set table_name = 'yellow_tripdata_' +  item  + '_external' %}
+    {% for item in get_year_month_load('green')  %}
+        {% set table_name = 'green_tripdata_' +  item  + '_external' %}
         select 
-           {{get_raw_yellow_tripdata_columns()}} 
-           , 'yellow_tripdata_{{item}}' as source_table
+           {{get_raw_green_tripdata_columns()}} 
+           , 'green_tripdata_{{item}}' as source_table
         from {{ source('raw', table_name) }}
         {% if not loop.last %}
             union all              
