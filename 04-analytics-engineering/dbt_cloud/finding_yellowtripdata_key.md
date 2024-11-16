@@ -80,7 +80,9 @@ Which can be very common as it wouldn't be rare that multiple drivers start a tr
 2020-01-06T06:28:00+00:00
 
 Example:
+
 <style>
+
     .myCustomColorVendorPickupDateDuplicate {
         width: 70%;
         text-align: center;
@@ -108,6 +110,7 @@ Example:
     
     .myCustomColorRowHashDuplicate tr:nth-child(5){ background: #FFCCCB; }
     .myCustomColorRowHashDuplicate tr:nth-child(6) { background: #FFCCCB; }    
+    
 </style>
 
 <div class="myCustomColorVendorPickupDateDuplicate">
