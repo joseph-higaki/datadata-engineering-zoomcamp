@@ -75,7 +75,43 @@ Key: **the whole row**
 
 [Analysis here](./finding_yellowtripdata_key.md)
 
-1. default values across months of single service
+### Standardize column names
+    1. VendorID -> vendor_id
+    1. PULocationID -> pickup_location_id
+    1. DOLocationID -> dropoff_location_id
+    1. tpep_pickup_datetime -> pickup_datetime
+    1. lpep_pickup_datetime -> pickup_datetime
+    1. Pickup_datetime -> pickup_datetime
+    1. lpep_dropoff_datetime -> dropoff_datetime    
+
+### Standardize between yellow and green columns
+
+|yellow               |green                      |
+|---------------------|---------------------------|
+|DOLocationID         |DOLocationID               |
+|PULocationID         |PULocationID               |
+|RatecodeID           |RatecodeID                 |
+|VendorID             |VendorID                   |
+|airport_fee          |                           |
+|congestion_surcharge |congestion_surcharge       |
+|                     |ehail_fee                  |
+|extra                |extra                      |
+|fare_amount          |fare_amount                |
+|improvement_surcharge|improvement_surcharge      |
+|mta_tax              |mta_tax                    |
+|passenger_count      |passenger_count            |
+|payment_type         |payment_type               |
+|tpep_dropoff_datetime|lpep_dropoff_datetime      |
+|tpep_pickup_datetime |lpep_pickup_datetime       |
+|store_and_fwd_flag   |store_and_fwd_flag         |
+|tip_amount           |tip_amount                 |
+|tolls_amount         |tolls_amount               |
+|total_amount         |total_amount               |
+|trip_distance        |trip_distance              |
+|                     |trip_type                  |
+
+
+
 1. default values across services
 1. Valid lookup values
 

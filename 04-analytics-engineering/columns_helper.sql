@@ -1,3 +1,45 @@
+Yellow
+
+VendorID,
+tpep_pickup_datetime,
+tpep_dropoff_datetime,
+passenger_count,
+trip_distance,
+RatecodeID,
+store_and_fwd_flag,
+PULocationID,
+DOLocationID,
+payment_type,
+fare_amount,
+extra,
+mta_tax,
+tip_amount,
+tolls_amount,
+improvement_surcharge,
+total_amount,
+congestion_surcharge,
+airport_fee,
+
+VendorID as VendorID,
+tpep_pickup_datetime as tpep_pickup_datetime,
+tpep_dropoff_datetime as tpep_dropoff_datetime,
+passenger_count as passenger_count,
+trip_distance as trip_distance,
+RatecodeID as RatecodeID,
+store_and_fwd_flag as store_and_fwd_flag,
+PULocationID as PULocationID,
+DOLocationID as DOLocationID,
+payment_type as payment_type,
+fare_amount as fare_amount,
+extra as extra,
+mta_tax as mta_tax,
+tip_amount as tip_amount,
+tolls_amount as tolls_amount,
+improvement_surcharge as improvement_surcharge,
+total_amount as total_amount,
+congestion_surcharge as congestion_surcharge,
+airport_fee as airport_fee,
+
 {{ dbt.cast("VendorID", api.Column.translate_type("some_type")) }} as VendorID
 {{ dbt.cast("tpep_pickup_datetime", api.Column.translate_type("some_type")) }} as tpep_pickup_datetime
 {{ dbt.cast("tpep_dropoff_datetime", api.Column.translate_type("some_type")) }} as tpep_dropoff_datetime
@@ -47,6 +89,7 @@ https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_yellow
 {{ dbt.cast("congestion_surcharge", api.Column.translate_type("some_type")) }} as congestion_surcharge
 airport_fee
 
+FHV 
 
 ^(.*),$
 {{ dbt.cast("$1", api.Column.translate_type("some_type")) }} as $1
@@ -59,10 +102,37 @@ airport_fee
     {{ dbt.cast("SR_Flag", api.Column.translate_type("int")) }} as SR_Flag,
     {{ dbt.cast("Affiliated_base_number", api.Column.translate_type("string")) }} as Affiliated_base_number
 
-'dispatching_base_num'
-'pickup_datetime'
-'dropOff_datetime'
-'PUlocationID'
-'DOlocationID'
-'SR_Flag'
-'Affiliated_base_number'
+dispatching_base_num
+pickup_datetime
+dropOff_datetime
+PUlocationID
+DOlocationID
+SR_Flag
+Affiliated_base_number'
+
+
+
+
+
+Green
+
+VendorID,
+lpep_pickup_datetime,
+lpep_dropoff_datetime,
+store_and_fwd_flag,
+RatecodeID,
+PULocationID,
+DOLocationID,
+passenger_count,
+trip_distance,
+fare_amount,
+extra,
+mta_tax,
+tip_amount,
+tolls_amount,
+ehail_fee,
+improvement_surcharge,
+total_amount,
+payment_type,
+trip_type,
+congestion_surcharge       
