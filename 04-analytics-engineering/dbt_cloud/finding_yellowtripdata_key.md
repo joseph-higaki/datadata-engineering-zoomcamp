@@ -77,33 +77,70 @@ We can see that there are multiple records under the categories
 
 Which can be very common as it wouldn't be rare that multiple drivers start a trip at the same time using the same tech provider
 
-$\color{red}{\textsf{2020-01-06T06:28:00+00:00}}$
+2020-01-06T06:28:00+00:00
 
 Example:
+<style>
+    .myCustomColorVendorPickupDateDuplicate {
+        width: 70%;
+        text-align: center;
+    }
+    .myCustomColorVendorPickupDateDuplicate th {
+        background: grey;
+        word-wrap: break-word;
+        text-align: center;
+    }
+    .myCustomColorVendorPickupDateDuplicate tr:first-child { background: #FFCCCB; }
+    .myCustomColorVendorPickupDateDuplicate tr:nth-child(2) { background: #add8e6; }
+    .myCustomColorVendorPickupDateDuplicate tr:nth-child(3){ background: #FFCCCB; }
+    .myCustomColorVendorPickupDateDuplicate tr:nth-child(4) { background: #add8e6; }    
 
-|VendorID|tpep_pickup_datetime     |row_number_by_vendor_pickup|row_hash_value|row_number_by_row_hash_value|tpep_dropoff_datetime|passenger_count|trip_distance|RatecodeID|store_and_fwd_flag|PULocationID|DOLocationID|payment_type|fare_amount|extra|mta_tax|tip_amount|tolls_amount|improvement_surcharge|total_amount           |congestion_surcharge            |airport_fee|source_table|
-|--------|-------------------------|---------------------------|--------------|----------------------------|---------------------|---------------|-------------|----------|------------------|------------|------------|------------|-----------|-----|-------|----------|------------|---------------------|-----------------------|--------------------------------|-----------|------------|
-|$\color{red}{\textsf{2}}$       |$\color{red}{\textsf{2020-01-06T06:28:00+00:00}}$|1                          |74a09c99f42d6f2c95af6f7dfc6cbfca|1                           |2020-01-06T06:31:09+00:00|1              |0.7          |1         |N                 |142         |230         |1           |4.5        |0.0  |0.5    |1.56      |0.0         |0.3                  |9.36                   |2.5                             |           |yellow_tripdata_2020_01|
-|$\color{blue}{\textsf{1}}$       |$\color{blue}{\textsf{2020-01-06T06:28:00+00:00}}$|1                          |79a63061a644ff6dcbea6fd0fb42591f|1                           |2020-01-06T06:47:02+00:00|1              |8.3          |1         |N                 |262         |138         |1           |25.0       |2.5  |0.5    |6.85      |6.12        |0.3                  |41.27                  |2.5                             |           |yellow_tripdata_2020_01|
-|$\color{red}{\textsf{2}}$       |$\color{red}{\textsf{2020-01-06T06:28:00+00:00}}$|2                          |79838f78a4edae07dd129c6f5f96f321|1                           |2020-01-06T06:34:55+00:00|1              |1.11         |1         |N                 |48          |161         |1           |6.5        |0.0  |0.5    |0.98      |0.0         |0.3                  |10.78                  |2.5                             |           |yellow_tripdata_2020_01|
-|$\color{blue}{\textsf{1}}$       |$\color{blue}{\textsf{2020-01-06T06:28:00+00:00}}$|2                          |da0a646c48dbe14c5bd5ad1e55c3fafd|1                           |2020-01-06T06:33:07+00:00|1              |0.8          |1         |N                 |229         |161         |1           |5.5        |2.5  |0.5    |0.7       |0.0         |0.3                  |9.5                    |2.5                             |           |yellow_tripdata_2020_01|
-|2       |2020-01-06T06:28:00+00:00|3                          |9bc3b6d92cb5196cf5b6535c257573bb|1                           |2020-01-06T06:47:00+00:00|               |6.42         |          |                  |78          |74          |0           |18.19      |2.75 |0.5    |0.0       |6.12        |0.3                  |27.86                  |                                |           |yellow_tripdata_2020_01|
-|2       |2020-01-06T06:28:00+00:00|4                          |9bc3b6d92cb5196cf5b6535c257573bb|2                           |2020-01-06T06:47:00+00:00|               |6.42         |          |                  |78          |74          |0           |18.19      |2.75 |0.5    |0.0       |6.12        |0.3                  |27.86                  |                                |           |yellow_tripdata_2020_01|
 
-### 2. Having the same `row_hash_value`
+    .myCustomColorRowHashDuplicate {
+        width: 70%;
+        text-align: center;
+    }
+    .myCustomColorRowHashDuplicate th {
+        background: grey;
+        word-wrap: break-word;
+        text-align: center;
+    }
+    
+    .myCustomColorRowHashDuplicate tr:nth-child(5){ background: #FFCCCB; }
+    .myCustomColorRowHashDuplicate tr:nth-child(6) { background: #FFCCCB; }    
+</style>
 
-Which may be less likely for two valid records to be exactly the same
+<div class="myCustomColorVendorPickupDateDuplicate">
 
-Example: 
 |VendorID|tpep_pickup_datetime     |row_number_by_vendor_pickup|row_hash_value|row_number_by_row_hash_value|tpep_dropoff_datetime|passenger_count|trip_distance|RatecodeID|store_and_fwd_flag|PULocationID|DOLocationID|payment_type|fare_amount|extra|mta_tax|tip_amount|tolls_amount|improvement_surcharge|total_amount           |congestion_surcharge            |airport_fee|source_table|
 |--------|-------------------------|---------------------------|--------------|----------------------------|---------------------|---------------|-------------|----------|------------------|------------|------------|------------|-----------|-----|-------|----------|------------|---------------------|-----------------------|--------------------------------|-----------|------------|
 |2       |2020-01-06T06:28:00+00:00|1                          |74a09c99f42d6f2c95af6f7dfc6cbfca|1                           |2020-01-06T06:31:09+00:00|1              |0.7          |1         |N                 |142         |230         |1           |4.5        |0.0  |0.5    |1.56      |0.0         |0.3                  |9.36                   |2.5                             |           |yellow_tripdata_2020_01|
 |1       |2020-01-06T06:28:00+00:00|1                          |79a63061a644ff6dcbea6fd0fb42591f|1                           |2020-01-06T06:47:02+00:00|1              |8.3          |1         |N                 |262         |138         |1           |25.0       |2.5  |0.5    |6.85      |6.12        |0.3                  |41.27                  |2.5                             |           |yellow_tripdata_2020_01|
 |2       |2020-01-06T06:28:00+00:00|2                          |79838f78a4edae07dd129c6f5f96f321|1                           |2020-01-06T06:34:55+00:00|1              |1.11         |1         |N                 |48          |161         |1           |6.5        |0.0  |0.5    |0.98      |0.0         |0.3                  |10.78                  |2.5                             |           |yellow_tripdata_2020_01|
 |1       |2020-01-06T06:28:00+00:00|2                          |da0a646c48dbe14c5bd5ad1e55c3fafd|1                           |2020-01-06T06:33:07+00:00|1              |0.8          |1         |N                 |229         |161         |1           |5.5        |2.5  |0.5    |0.7       |0.0         |0.3                  |9.5                    |2.5                             |           |yellow_tripdata_2020_01|
-|2       |2020-01-06T06:28:00+00:00|3                          |$\color{red}{\textsf{9bc3b6d92cb5196cf5b6535c257573bb}}$|1                           |2020-01-06T06:47:00+00:00|               |6.42         |          |                  |78          |74          |0           |18.19      |2.75 |0.5    |0.0       |6.12        |0.3                  |27.86                  |                                |           |yellow_tripdata_2020_01|
-|2       |2020-01-06T06:28:00+00:00|4                          |$\color{red}{\textsf{9bc3b6d92cb5196cf5b6535c257573bb}}$|2                           |2020-01-06T06:47:00+00:00|               |6.42         |          |                  |78          |74          |0           |18.19      |2.75 |0.5    |0.0       |6.12        |0.3                  |27.86                  |                                |           |yellow_tripdata_2020_01|
+|2       |2020-01-06T06:28:00+00:00|3                          |9bc3b6d92cb5196cf5b6535c257573bb|1                           |2020-01-06T06:47:00+00:00|               |6.42         |          |                  |78          |74          |0           |18.19      |2.75 |0.5    |0.0       |6.12        |0.3                  |27.86                  |                                |           |yellow_tripdata_2020_01|
+|2       |2020-01-06T06:28:00+00:00|4                          |9bc3b6d92cb5196cf5b6535c257573bb|2                           |2020-01-06T06:47:00+00:00|               |6.42         |          |                  |78          |74          |0           |18.19      |2.75 |0.5    |0.0       |6.12        |0.3                  |27.86                  |                                |           |yellow_tripdata_2020_01|
 
+</div>
+
+### 2. Having the same `row_hash_value`
+
+Which may be less likely for two valid records to be exactly the same
+
+Example: 
+
+<div class="myCustomColorRowHashDuplicate">
+
+|VendorID|tpep_pickup_datetime     |row_number_by_vendor_pickup|row_hash_value|row_number_by_row_hash_value|tpep_dropoff_datetime|passenger_count|trip_distance|RatecodeID|store_and_fwd_flag|PULocationID|DOLocationID|payment_type|fare_amount|extra|mta_tax|tip_amount|tolls_amount|improvement_surcharge|total_amount           |congestion_surcharge            |airport_fee|source_table|
+|--------|-------------------------|---------------------------|--------------|----------------------------|---------------------|---------------|-------------|----------|------------------|------------|------------|------------|-----------|-----|-------|----------|------------|---------------------|-----------------------|--------------------------------|-----------|------------|
+|2       |2020-01-06T06:28:00+00:00|1                          |74a09c99f42d6f2c95af6f7dfc6cbfca|1                           |2020-01-06T06:31:09+00:00|1              |0.7          |1         |N                 |142         |230         |1           |4.5        |0.0  |0.5    |1.56      |0.0         |0.3                  |9.36                   |2.5                             |           |yellow_tripdata_2020_01|
+|1       |2020-01-06T06:28:00+00:00|1                          |79a63061a644ff6dcbea6fd0fb42591f|1                           |2020-01-06T06:47:02+00:00|1              |8.3          |1         |N                 |262         |138         |1           |25.0       |2.5  |0.5    |6.85      |6.12        |0.3                  |41.27                  |2.5                             |           |yellow_tripdata_2020_01|
+|2       |2020-01-06T06:28:00+00:00|2                          |79838f78a4edae07dd129c6f5f96f321|1                           |2020-01-06T06:34:55+00:00|1              |1.11         |1         |N                 |48          |161         |1           |6.5        |0.0  |0.5    |0.98      |0.0         |0.3                  |10.78                  |2.5                             |           |yellow_tripdata_2020_01|
+|1       |2020-01-06T06:28:00+00:00|2                          |da0a646c48dbe14c5bd5ad1e55c3fafd|1                           |2020-01-06T06:33:07+00:00|1              |0.8          |1         |N                 |229         |161         |1           |5.5        |2.5  |0.5    |0.7       |0.0         |0.3                  |9.5                    |2.5                             |           |yellow_tripdata_2020_01|
+|2       |2020-01-06T06:28:00+00:00|3                          |9bc3b6d92cb5196cf5b6535c257573bb|1                           |2020-01-06T06:47:00+00:00|               |6.42         |          |                  |78          |74          |0           |18.19      |2.75 |0.5    |0.0       |6.12        |0.3                  |27.86                  |                                |           |yellow_tripdata_2020_01|
+|2       |2020-01-06T06:28:00+00:00|4                          |9bc3b6d92cb5196cf5b6535c257573bb|2                           |2020-01-06T06:47:00+00:00|               |6.42         |          |                  |78          |74          |0           |18.19      |2.75 |0.5    |0.0       |6.12        |0.3                  |27.86                  |                                |           |yellow_tripdata_2020_01|
+
+</div>
 
 
 ## Deduplication Strategy
