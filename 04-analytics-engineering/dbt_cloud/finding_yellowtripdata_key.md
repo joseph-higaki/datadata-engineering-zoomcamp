@@ -83,6 +83,12 @@ Example:
 | --- | --- |
 | something | ==something highlighted== |
 
+`#FFCCCB` a test 
+
+`#RRGGBB` a test 
+
+:bangbang: a test :bangbang:
+
 
 |VendorID|tpep_pickup_datetime     |row_number_by_vendor_pickup|row_hash_value|row_number_by_row_hash_value|tpep_dropoff_datetime|passenger_count|trip_distance|RatecodeID|store_and_fwd_flag|PULocationID|DOLocationID|payment_type|fare_amount|extra|mta_tax|tip_amount|tolls_amount|improvement_surcharge|total_amount           |congestion_surcharge            |airport_fee|source_table|
 |--------|-------------------------|---------------------------|--------------|----------------------------|---------------------|---------------|-------------|----------|------------------|------------|------------|------------|-----------|-----|-------|----------|------------|---------------------|-----------------------|--------------------------------|-----------|------------|
