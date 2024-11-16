@@ -77,6 +77,8 @@ We can see that there are multiple records under the categories
 
 Which can be very common as it wouldn't be rare that multiple drivers start a trip at the same time using the same tech provider
 
+$\color{red}{\textsf{2020-01-06T06:28:00+00:00}}$
+
 Example:
 
 |VendorID|tpep_pickup_datetime     |row_number_by_vendor_pickup|row_hash_value|row_number_by_row_hash_value|tpep_dropoff_datetime|passenger_count|trip_distance|RatecodeID|store_and_fwd_flag|PULocationID|DOLocationID|payment_type|fare_amount|extra|mta_tax|tip_amount|tolls_amount|improvement_surcharge|total_amount           |congestion_surcharge            |airport_fee|source_table|
