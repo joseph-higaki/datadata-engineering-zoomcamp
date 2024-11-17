@@ -44,3 +44,5 @@ models:
     core:
       materialized: table
       
+vars:
+  store_and_fwd_flag_values: ['Y','N']
