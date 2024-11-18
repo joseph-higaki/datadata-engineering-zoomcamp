@@ -110,6 +110,9 @@ models:
       - name: passenger_count
         data_type: int64
         description: ""
+        tests: 
+          - not_null:
+              severity: warn
 
       - name: trip_distance
         data_type: numeric
@@ -118,6 +121,9 @@ models:
       - name: rate_code_id
         data_type: int64
         description: ""
+        tests:
+          - not_null:
+              severity: warn
 
       - name: store_and_fwd_flag
         data_type: string
@@ -138,6 +144,11 @@ models:
       - name: fare_amount
         data_type: numeric
         description: ""
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: false
+              severity: warn
 
       - name: extra_amount
         data_type: numeric
@@ -205,6 +216,9 @@ models:
       - name: dispatching_base_number
         data_type: string
         description: ""
+        tests:
+          - not_null:
+              severity: warn
 
       - name: pickup_datetime
         data_type: timestamp
@@ -224,6 +238,9 @@ models:
       - name: dropoff_location_id
         data_type: int64
         description: ""
+        tests:
+          - not_null:
+              severity: warn
 
       - name: shared_ride_chain_flag
         data_type: int64

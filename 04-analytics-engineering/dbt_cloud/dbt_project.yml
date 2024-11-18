@@ -40,7 +40,7 @@ models:
     raw:
       materialized: view
     staging:
-      materialized: table
+      materialized: view
     core:
       materialized: table
       
