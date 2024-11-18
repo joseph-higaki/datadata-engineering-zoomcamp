@@ -118,7 +118,7 @@ models:
         description: ""
         tests: 
           - not_null:
-              severity: warn
+              severity: error
 
       - name: trip_distance
         data_type: numeric
