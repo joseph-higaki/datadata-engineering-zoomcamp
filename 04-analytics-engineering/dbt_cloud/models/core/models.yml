@@ -102,10 +102,16 @@ models:
       - name: pickup_datetime
         data_type: timestamp
         description: ""
+        tests: 
+          - not_null:
+              severity: error
 
       - name: dropoff_datetime
         data_type: timestamp
         description: ""
+        tests: 
+          - not_null:
+              severity: warn
 
       - name: passenger_count
         data_type: int64
