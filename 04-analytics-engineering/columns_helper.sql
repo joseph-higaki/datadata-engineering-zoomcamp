@@ -136,3 +136,15 @@ total_amount,
 payment_type,
 trip_type,
 congestion_surcharge       
+
+
+sum(fare_amount) as fare_amount,
+sum(extra_amount) as extra_amount,
+sum(mta_tax) as mta_tax,
+sum(tip_amount) as tip_amount,
+sum(tolls_amount) as tolls_amount,
+sum(improvement_surcharge) as improvement_surcharge,
+sum(total_amount) as total_amount,
+sum(congestion_surcharge) as congestion_surcharge,
+sum(airport_fee) as airport_fee,
+sum(ehail_fee) as ehail_fee

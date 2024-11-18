@@ -23,7 +23,7 @@ To identify duplicate records
 
 <details>
     <summary>
-        See Model: <a href="04-analytics-engineering/dbt_cloud/models/raw/yellow_tripdata_rownumber_hash.sql">yellow_tripdata_rownumber_hash</a>
+        See Model: <a href="04-analytics-engineering/_deprecated__yellow_tripdata_rownumber_hash.sql">yellow_tripdata_rownumber_hash</a>
     </summary>
 
 ```sql

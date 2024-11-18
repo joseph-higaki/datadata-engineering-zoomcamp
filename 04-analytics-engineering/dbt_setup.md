@@ -82,5 +82,64 @@ as
   select * except(ehail_fee) from nyc_taxi.green_tripdata_external
 ```
 
+*** UPDATE on workaround *** 
+I used a one external table per parquet and later forced column casting for each `union all` table per month 
+
+## Environments
+I created only development environment
+
+[Why and how staging environment](https://docs.getdbt.com/docs/deploy/deploy-environments#staging-environment)
 
 
+
+##  Setting up a Big QUery sepearate project
+
+Project: nyc-taxi-prod
+dataset: nyc_taxi
+
+service account: dbt-nyc-taxi@nyc-taxi-prod.iam.gserviceaccount.com
+
+https://docs.getdbt.com/guides/bigquery?step=4
+1. Setting up Roles to  BigQuery Job User and BigQuery Data Editor
+1. Created a service account key
+
+### DBT PROD connection
+ created a new Connection `BigQuery PROD` with the service account key
+ (didn't specified GC madrid location, may need to)
+
+![alt text](../_resources/04-analytics-engineering/dbt_setup.md/image-4.png)
+
+
+
+### Created a job and run it
+Failed because my source is at a different GCP project than the PROD  credentials
+![alt text](../_resources/04-analytics-engineering/dbt_setup.md/image-5.png)
+```bash
+Reason: Database Error in model raw_green_tripdata_all (models/raw/raw_green_tripdata_all.sql)
+  Access Denied: Table de-zoomcamp-jhigaki-course:nyc_taxi_raw.green_tripdata_2019_01_external: User does not have permission to query table de-zoomcamp-jhigaki-course:nyc_taxi_raw.green_tripdata_2019_01_external, or perhaps it does not exist.
+  ```
+
+## Issues having different GCP Projects
+
+1. dbt seems to be using a single user so;
+  1. Your raw data should be EXTRACTED and LOADED into your PROD GCP project
+  1. Depending on the environment dbt runs, sources should be different
+  1. Depending on the environment dbt runs, sources need to change accordingly. Didn't find (or searched, how to do this). I think you can use environment variables win the source file
+  1. Depending on the  environment dbt runs, credentials need to be provided:  https://xebia.com/blog/managing-multiple-bigquery-projects-with-one-dbt-cloud-project/
+  
+  1. for now, to close the circle, and until i can put the EL data in the PROD database, I will use the same project
+![alt text](../_resources/04-analytics-engineering/dbt_setup.md/image-6.png)
+
+
+THe question remains:
+* It is not recommended having a GCP service key that has access to multiple projects
+* dbt uses a single connection for the run, that includes:
+  * Reading sources
+  * Writing into materialized tables
+* Why in source.yml we need to specify `database`. On which scenario in GCP Big Query, the source database would be a different project than the connection it grants accessto 
+
+
+
+##  Succesfully run DBT job in production
+
+## What about CI jobs

@@ -112,12 +112,122 @@ Key: **the whole row**
 
 
 
-1. default values across services
+
+When implementing TESTS
 1. Valid lookup values
 
 ## Core
 1. Fact trip
+    DONE
+
 1. Dim Taxi Zones
 1. Dim Payment Types?
 1. 
 
+next steps
+
+test
+4.3.2
+https://www.youtube.com/watch?v=2dNJXHFCHaY&list=PLaNLNpjZpzwgneiI-Gl8df8GCsPYp_6Bs&index=3
+HOW TO DEPLOY AND DO INCREMENTAL! 
+ 4.4.1 - 
+ https://www.youtube.com/watch?v=V2m5C0n8Gro&list=PLaNLNpjZpzwgneiI-Gl8df8GCsPYp_6Bs&index=6
+
+
+## Generate Model Yaml
+https://hub.getdbt.com/dbt-labs/codegen/latest/
+
+install by CLI: 
+`dbt deps`
+
+then to generate Model schema do, in the `raw` directory for example
+```sql
+{% set models_to_generate = codegen.get_models(directory='raw') %}
+{{ codegen.generate_model_yaml(
+    model_names = models_to_generate
+) }}
+```
+
+And it will generate the yaml file that goes in the [`schema.yml`](./models/raw/schema.yml), beneath sources
+
+
+## Existential Concern 
+* Where to put generic or singular tests at which stage? 
+https://docs.getdbt.com/faqs/Tests/when-to-test 
+
+[What tests should I add to my project?](https://docs.getdbt.com/faqs/Tests/recommended-tests )
+* [every model on pk: unique / not null ](https://docs.getdbt.com/best-practices/best-practice-workflows#add-tests-to-your-models)
+* *In advanced dbt projects, we recommend using sources and running these source data-integrity tests against the sources rather than models.*  
+
+## Data Tests
+    * [GEneric](https://docs.getdbt.com/docs/build/data-tests#generic-data-tests): can be 
+        * DEfined in a `{%test%}` block receiving model, column
+        * out of the box: unique, not null, accepted values, or relationships
+        * community based:  dbt-utils and dbt-expectations 
+            * https://hub.getdbt.com/calogica/dbt_expectations/latest/
+            * https://hub.getdbt.com/dbt-labs/dbt_utils/latest/ 
+    * [Singular](https://docs.getdbt.com/docs/build/data-tests#singular-data-tests): can be speciffic queries in the /tests folder raising records for custom logic. ADd each test in the tests/schema.yml
+
+[Unit Tests](https://docs.getdbt.com/docs/build/unit-tests)
+
+`dbt test -m core `
+
+## Documentation
+
+`dbt docs generate `
+
+I wasn't able to see generated docs, because apparently I didn't have PROD or STA environments
+
+
+
+## Deployment
+4.4.1
+https://www.youtube.com/watch?v=V2m5C0n8Gro&list=PLaNLNpjZpzwgneiI-Gl8df8GCsPYp_6Bs&index=6
+
+dbt operates on the datawarehouse (database)
+![alt text](../../_resources/04-analytics-engineering/dbt_cloud/README.md/image-2.png)
+
+## Environments
+ * dbt Cloud environment = dbt Core Profiles.yml entries
+
+* Developoer credentials for data source (Big QUery) are used for DEvelopment environment. These were set at dbt Cloud profile setting [see](../dbt_setup.md#create-specific-gcp-service-account)
+
+# Best practices
+
+## Structure
+I did a 
+├── models
+│   ├── raw
+│   ├── staging
+│   ├── core
+
+structure recommended
+├── models
+│   ├── staging
+│   ├── intermediate
+│   ├── marts
+
+## Style
+https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview
+
+## Run / Build
+* RUn: executes comiled SQL according to materialization strategy
+* Build: run + tests 
+https://www.castordoc.com/blog/dbt-build-vs-dbt-run 
+
+BUild is preferred (speciallyin PROD) so it executes tests first
+https://hevodata.com/learn/dbt-build-vs-dbt-run/
+
+
+## Use run or build 
+Examples on how you can run by modified state or previous run results
+ https://docs.getdbt.com/best-practices/best-practice-workflows#run-only-modified-models-to-test-changes-slim-ci
+It looks like it can save **LIMITED BUILD EVENTS**
+
+
+## Materialization changes
+I changed staging to be materialized as view
+Got the error because couldn't create views as a table already existed
+Had to use full refresh
+`dbt build --vars '{'is_test_run': 'false'}' --full-refresh`
+ 
