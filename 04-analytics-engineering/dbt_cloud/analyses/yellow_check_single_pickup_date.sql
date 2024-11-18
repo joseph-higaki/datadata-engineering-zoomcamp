@@ -21,7 +21,7 @@ y1.tpep_pickup_datetime,
   total_amount,
   congestion_surcharge,
   airport_fee, source_table
-from {{ref('yellow_tripdata_rownumber_hash')}} y1 
+from {{ref('stg_yellow_tripdata')}} y1 
 where 1=1
 -- and y1.rn_hash > 1
 and y1.row_hash_value = '9bc3b6d92cb5196cf5b6535c257573bb'
