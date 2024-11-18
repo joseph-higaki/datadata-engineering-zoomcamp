@@ -9,7 +9,7 @@ with y as (
         when 1 then 0
         else 1 
     end duplicate_count,    
-    from {{ref('yellow_tripdata_rownumber_hash')}}  
+    from {{ref('stg_yellow_tripdata')}}  
 ),
 original_with_duplicates as (
     select count(1) as original_with_duplicates_count
