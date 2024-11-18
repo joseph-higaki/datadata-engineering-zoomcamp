@@ -1,11 +1,4 @@
 version: 2
-sources:
-  - name: staging
-    database: de-zoomcamp-jhigaki-course
-    schema: nyc_taxi
-    tables:
-      - name: green_tripdata
-
 models:
   - name: stg_taxi_zone_lookup
     description: ""
