@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "conceptualSchemaSettings": {},
+  "queries": [
+    {
+      "name": "fact_fhv_taxi_tripdata_2019_2020",
+      "navigationStepName": "Navigation",
+      "text": [
+        "let",
+        "    Source = Value.NativeQuery(GoogleBigQuery.Database([UseStorageApi=false, CommandTimeout=#duration(30, 0, 0, 0), BillingProject=\"de-zoomcamp-jhigaki-course\", ConnectionTimeout=#duration(30, 0, 0, 0)]){[Name=\"de-zoomcamp-jhigaki-course\"]}[Data], \"select *#(lf)from `nyc_taxi_prod.fact_fhv_tripdata`#(lf)where extract(year from pickup_datetime) in (2019, 2020)#(lf)and pickup_location_id is not null\", null, [EnableFolding=true]),",
+        "    #\"Added Custom Column\" = Table.AddColumn(Source, \"Custom\", each Text.Combine({DateTime.ToText([pickup_datetime], \"yyyy\"), \"-\", DateTime.ToText([pickup_datetime], \"MM\")}), type text),",
+        "    #\"Renamed Columns\" = Table.RenameColumns(#\"Added Custom Column\",{{\"Custom\", \"pickup-year-month\"}})",
+        "in",
+        "    #\"Renamed Columns\""
+      ],
+      "isDirectQuery": true,
+      "resultType": "Table"
+    }
+  ],
+  "queryGroups": [],
+  "culture": "en-US",
+  "firewallEnabled": true
+}

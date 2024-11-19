@@ -1,0 +1,9 @@
+{
+  "version": "4.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../nyc_taxi_tripdata.SemanticModel"
+    },
+    "byConnection": null
+  }
+}

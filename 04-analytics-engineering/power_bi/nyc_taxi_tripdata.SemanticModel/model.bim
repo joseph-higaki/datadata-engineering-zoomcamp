@@ -1,0 +1,251 @@
+{
+  "compatibilityLevel": 1550,
+  "model": {
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"fact_fhv_taxi_tripdata\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.138.782.0 (24.11)"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ],
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "fact_fhv_taxi_tripdata",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          }
+        ],
+        "columns": [
+          {
+            "name": "trip_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "716b3b74-c5ed-4783-8344-5f147281d680",
+            "sourceColumn": "trip_id",
+            "sourceProviderType": "nvarchar(16384)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "trip_type",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "98e5ebbd-3ecc-4dfb-bb73-2d10f287aad6",
+            "sourceColumn": "trip_type",
+            "sourceProviderType": "nvarchar(16384)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "pickup_datetime",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "f768b1e1-caae-498e-ae15-eab43af50f98",
+            "sourceColumn": "pickup_datetime",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "dropoff_datetime",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "51e8e94c-d46c-4935-a128-4f68690796cb",
+            "sourceColumn": "dropoff_datetime",
+            "sourceProviderType": "datetime2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "pickup_location_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "fde600ac-feeb-4cc8-884f-34358e775534",
+            "sourceColumn": "pickup_location_id",
+            "sourceProviderType": "bigint",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "pickup_location_zone",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "06b31bf3-2ef7-462d-a958-5d8d7025eb16",
+            "sourceColumn": "pickup_location_zone",
+            "sourceProviderType": "nvarchar(16384)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "pickup_location_borough",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "6b77d75b-6f2a-49d2-bba4-a55d9169c8b9",
+            "sourceColumn": "pickup_location_borough",
+            "sourceProviderType": "nvarchar(16384)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "dropoff_location_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "0539d21d-6cb0-41d6-9957-7fe1b861bad1",
+            "sourceColumn": "dropoff_location_id",
+            "sourceProviderType": "bigint",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "dropoff_location_zone",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "58f81bbd-bc72-41bf-a442-5c08ff924847",
+            "sourceColumn": "dropoff_location_zone",
+            "sourceProviderType": "nvarchar(16384)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "dropoff_location_borough",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "39c707de-e82c-493f-a25c-98b5b790f2bb",
+            "sourceColumn": "dropoff_location_borough",
+            "sourceProviderType": "nvarchar(16384)",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PickupDateMonth",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "expression": "FORMAT(fact_fhv_taxi_tripdata[pickup_datetime], \"YYYY-MM)\")",
+            "isDataTypeInferred": true,
+            "lineageTag": "bc489495-30d2-49ed-a9d7-05775d64adb1",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "pickup_datetime Hierarchy",
+            "levels": [
+              {
+                "name": "pickup_datetime",
+                "column": "pickup_datetime",
+                "lineageTag": "1679b8c8-1091-4caa-af9f-639b52926a01",
+                "ordinal": 0
+              }
+            ],
+            "lineageTag": "0edb6cb8-f50a-4e51-ace4-5db91fbe520e"
+          }
+        ],
+        "lineageTag": "336da5ff-88c6-4a33-89ee-534522545a85",
+        "partitions": [
+          {
+            "name": "fact_fhv_taxi_tripdata",
+            "mode": "directQuery",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = GoogleBigQuery.Database(),",
+                "    #\"de-zoomcamp-jhigaki-course\" = Source{[Name=\"de-zoomcamp-jhigaki-course\"]}[Data],",
+                "    nyc_taxi_prod_Schema = #\"de-zoomcamp-jhigaki-course\"{[Name=\"nyc_taxi_prod\",Kind=\"Schema\"]}[Data],",
+                "    fact_fhv_taxi_tripdata_Table = nyc_taxi_prod_Schema{[Name=\"fact_fhv_taxi_tripdata\",Kind=\"Table\"]}[Data]",
+                "in",
+                "    fact_fhv_taxi_tripdata_Table"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
