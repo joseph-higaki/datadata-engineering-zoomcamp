@@ -5,7 +5,7 @@ with fhv as (
 taxi as (
     select * from {{ref("fact_taxi_tripdata")}}
 ),
-with unioned as (
+unioned as (
     select 
         trip_id,
         trip_type,

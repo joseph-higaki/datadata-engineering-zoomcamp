@@ -7,6 +7,7 @@ zone as (
 ),
 fhv as (
     select        
+        trip_id,
         trip_type,
         row_hash_value, 
         dispatching_base_number,

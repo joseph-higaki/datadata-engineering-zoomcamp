@@ -1,10 +1,14 @@
-ith yellow as (
+with yellow as (
     select * 
     from {{ ref('stg_yellow_tripdata') }}
 ),
 green as (
     select * 
     from {{ ref('stg_green_tripdata') }}
+),
+zone as (
+    select *
+    from {{ref('dim_zone')}}
 ),
 unioned as (
     select 
@@ -60,13 +64,13 @@ unioned as (
     from green
 
 ),
-unioned_with zones as (
+unioned_with_zones as (
     select unioned.*,
         zpu.zone as pickup_location_zone,
         zpu.borough as pickup_location_borough,
         zdo.zone as dropoff_location_zone,
         zdo.borough as dropoff_location_borough
-    from fhv
+    from unioned
     left join zone zpu on unioned.pickup_location_id = zpu.location_id
     left join zone zdo on unioned.dropoff_location_id = zdo.location_id
     {% if var('is_test_run', default=true) %}
