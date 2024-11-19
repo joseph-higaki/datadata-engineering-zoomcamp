@@ -231,3 +231,19 @@ Got the error because couldn't create views as a table already existed
 Had to use full refresh
 `dbt build --vars '{'is_test_run': 'false'}' --full-refresh`
  
+
+ ## CI Jobs
+
+ It create s a prefixed dataset
+ ![alt text](../../_resources/04-analytics-engineering/dbt_cloud/README.md/image-3.png)
+ 
+ During the job execution, 
+ ![alt text](../../_resources/04-analytics-engineering/dbt_cloud/README.md/image-4.png)
+
+After it completes:
+ ![alt text](../../_resources/04-analytics-engineering/dbt_cloud/README.md/image-5.png)
+
+ I still don't understand how the dbt CI test is launched upon PR
+
+ 
+ # INcremental changes
