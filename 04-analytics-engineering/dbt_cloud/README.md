@@ -247,3 +247,5 @@ After it completes:
 
  
  # INcremental changes
+ https://docs.getdbt.com/docs/build/incremental-models
+ PENDINGG
