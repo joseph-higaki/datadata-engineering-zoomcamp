@@ -249,3 +249,25 @@ After it completes:
  # INcremental changes
  https://docs.getdbt.com/docs/build/incremental-models
  PENDINGG
+
+ # Orchestrate dbt with Airflow
+
+ # install dbt core in a container 
+
+https://docs.getdbt.com/docs/core/docker-install
+
+If Big QUery flavor, for example: 
+https://github.com/dbt-labs/dbt-bigquery/pkgs/container/dbt-bigquery 
+
+Be aware of versions
+https://docs.getdbt.com/docs/dbt-versions/core 
+
+
+Choose a dbt flavor
+ https://docs.getdbt.com/docs/trusted-adapters 
+
+
+Or use airflow with dbt Cloud
+https://www.astronomer.io/docs/learn/airflow-dbt-cloud/ 
+
+Preferred bridge between dbt and Airflow: [Astronomer](https://astronomer.github.io/astronomer-cosmos/)
