@@ -13,10 +13,10 @@
             "x": 0,
             "y": 0
           },
-          "nodeIndex": "fact_fhv_taxi_tripdata",
-          "nodeLineageTag": "336da5ff-88c6-4a33-89ee-534522545a85",
+          "nodeIndex": "fact_fhv_tripdata",
+          "nodeLineageTag": "edc1bcea-9f56-4025-939f-708adb85dd66",
           "size": {
-            "height": 300,
+            "height": 176,
             "width": 234
           },
           "zIndex": 0

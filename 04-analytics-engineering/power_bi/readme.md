@@ -35,3 +35,6 @@ At the Transformation (Power QUery) - can't
 
 At the model (DAX) - cant
 ![alt text](../../_resources/04-analytics-engineering/power_bi/readme.md/image-6.png)
+
+**Failed at working with 100 000 records** 
+
