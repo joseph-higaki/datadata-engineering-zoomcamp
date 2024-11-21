@@ -1,0 +1,4 @@
+Host de-zoomcamp-spark-instance
+    HostName 34.175.206.91
+    User spark_jhigaki_gcp
+    IdentityFile ~/.ssh/spark_jhigaki_gcp_key
