@@ -2,7 +2,10 @@
 .ipynb_checkpoints/
 .history
 **/ny_taxi_postgres_data/*
-*.auth/*
+# Ignore .auth folders contents (usually keys)
+**/*.auth/*
+# But allow an informative .txt file in it
+!**/*.auth/*.txt
 *.tfstate
 *.tfstate.*
 **.terraform
@@ -10,3 +13,4 @@
 **logs/
 **.env
 **google_credentials.json
+
