@@ -161,7 +161,7 @@ Change the directories according to your enviroment, and the s
 CANNOT
 
 
-## install spark on _____CLOUD?_____
+## install spark on GCP CLOUD
 
 ### INstall Google CLoud CLI
 https://cloud.google.com/compute/docs/connect/create-ssh-keys#gcloud
