@@ -1,4 +1,10 @@
 Host de-zoomcamp-spark-instance
-    HostName 34.175.51.18
+    HostName 34.175.51.18sfsdfclear
     User spark_jhigaki_gcp
     IdentityFile /workspaces/data-engineering-zoomcamp/05-batch/.auth/spark_jhigaki_gcp_key
+
+Host de-zoomcamp-spark-medium
+    HostName 34.175.141.193
+    User spark_jhigaki_gcp
+    IdentityFile /workspaces/data-engineering-zoomcamp/05-batch/.auth/spark_jhigaki_gcp_key
+
