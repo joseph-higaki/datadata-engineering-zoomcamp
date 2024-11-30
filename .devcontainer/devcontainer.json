@@ -106,7 +106,8 @@
 				"GitHub.github-vscode-theme",
 				"bierner.markdown-preview-github-styles",
 				"hashicorp.terraform",
-				"dvirtz.parquet-viewer"
+				"dvirtz.parquet-viewer",
+				"Postman.postman-for-vscode"
 				]
 			}
 		}

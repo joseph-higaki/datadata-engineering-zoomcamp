@@ -45,16 +45,17 @@ and course files
 
 * Union files (green & yelllow)
 * add service type column
-* udf spark function
+* udf spark function (date comment function)
 * execute sql
 
-## 04 
+## 04 [Group By SPark](./04_taxi_rides_spark.ipynb)
 BAsed on LEctures [5.4.1](https://www.youtube.com/watch?v=68CipcZt7ZA&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=58)
 [5.4.2](https://www.youtube.com/watch?v=9qrDsY_2COo&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=59)
-GROUP BY 
-group by sum trip count, passenger count
-group by in spark, 
-join by something big
+
+*GROUP BY*
+
+- group by sum trip count, passenger count. IN SPARK
+- join by something with high cardinality
 - trips in the same hour window, zone, sum amount
     - Be consious about re-shuffling
     - grouping and aggregating are done distributed
@@ -67,8 +68,44 @@ join by something big
 - after 
 
 
-## 05 
-- Join service type side to side
-- per passenger revenue
+## 05 [Join n REpartition](./05_taxi_rides_spark.ipynb)
+From lecture [5.4.3](https://www.youtube.com/watch?v=lu7TrqAWuH4&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=60)
+- Load from parquet the revenue yellow and green
+- no repartition - Join service type side to side
+- repartition - Join service type side to side
+https://www.youtube.com/watch?v=lu7TrqAWuH4&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=60
+
+- Join small tables. Broadcast exchange
+![alt text](../_resources/05-batch/readme.md/image-2.png)
+This is faster than doing a merge sort exchange
+
+The entire zone table is sent to each executor, and there it is looked up
+
+See article [sort merge vs broadcast](https://medium.com/swlh/spark-joins-tuning-part-1-sort-merge-vs-broadcast-a98d82610cf0)
+
+![alt text](../_resources/05-batch/readme.md/image-1.png)
+
+
+## 06 [RDDs map and reduce](./06_taxi_rides_spark.ipynb)
+Most of the time we don't need to use RDDs
+- do map / reduce  
+
+## 07 RDDs mapPartitions
+
+
+Use map when the transformation logic is straightforward and can be applied independently to each element without requiring context from other elements or partitions.
+
+Use mapPartitions when the transformation requires setup or teardown of resources (like database connections) that are expensive to initialize for each element but can be shared across elements within the same partition.
+
+
+skip to nexttm, spark with gcs 
+
+## 08 Spark with GCP 
+
+
+
+
+
+
     
 

@@ -352,3 +352,22 @@ Executing this in the terminal of the dev container:
 
 here notice that jupyter noteboook is running @ de-zoomcamp-spark-instance in port 8888
 And it is forwarded to port 8891 from the dev container
+
+
+## CHeck if jupyter notebook is running
+I started a jupyter notbook with port 8890, and it started on 8891
+
+This was because I suspended the gcp VM with the jupyter notebook running. 
+So, when the VM resumed, it is still running.
+1. How would I be able to connect back to it? From my vs.code notebook
+2. How to kill it so I can start a new one?
+
+```bash
+(base) spark_jhigaki_gcp@spark-medium:~$ ps aux | grep jupyter
+spark_j+    9256  0.0  1.9 533476 155276 pts/3   Sl+  Nov26   0:11 /home/spark_jhigaki_gcp/anaconda3/bin/python /home/spark_jhigaki_gcp/anaconda3/bin/jupyter-notebook --port 8890
+spark_j+    9262  0.0  2.0 1350412 165120 ?      Ssl  Nov26   0:06 /home/spark_jhigaki_gcp/anaconda3/bin/python -Xfrozen_modules=off -m ipykernel_launcher -f /home/spark_jhigaki_gcp/.local/share/jupyter/runtime/kernel-0b5c9f3a-902b-4342-906b-578cb3d93dfd.json
+spark_j+    9299  0.0  1.5 1310688 122260 ?      Ssl  Nov26   0:03 /home/spark_jhigaki_gcp/anaconda3/bin/python -Xfrozen_modules=off -m ipykernel_launcher -f /home/spark_jhigaki_gcp/.local/share/jupyter/runtime/kernel-5a0f6b84-b826-4a8e-b345-66d967dae6fd.json
+spark_j+   12226  0.0  0.0   3744  1848 pts/6    S+   20:14   0:00 grep jupyter
+```
+
+kill 9256
