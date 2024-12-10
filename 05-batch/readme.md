@@ -101,13 +101,21 @@ skip to nexttm, spark with gcs
 
 * Connect to GCS
 - [read GCS Bucket](./08_taxi_rides_spark.ipynb)
-- 
+
+
+## 09 Spark with GCS write
+* Connect to GCS
+- [read and write  Bucket](./09_taxi_rides_spark.ipynb)
+Had a lot of issues. seee [folder](./spark_gcp_specific_credentials_tests/)
+[**Conclusion here**](./spark_gcp_specific_credentials_tests/unsucsessful_spark_credentials_specification.md#conclusion)
 
 
 
-## 09 Spark Standalone
+## 09.01 SPark Standalone
 
-
+* [Testing Juypyter Notebook to Standalone Spark ](./09-01_taxi_rides_spark.ipynb)
+* [Script with hardcoded read/write paths](./09-01_taxi_rides_spark.py)
+* [Script with parmas read/write paths](./09-01_taxi_rides_spark_params.py)
 
 ### [Starting a SPark Cluster Manually](https://spark.apache.org/docs/3.5.3/spark-standalone.html#starting-a-cluster-manually)
 
@@ -238,38 +246,7 @@ Start worker
 ![alt text](../_resources/05-batch/readme.md/image-9.png)
 
 
-
-
-* Connect to standalone spark
-- write
-
-
-```mermaid
-graph TD
-  Host[Host Machine (Win 11)]
-  Docker[Docker]
-  DevContainer[Dev Container (VS Code)]
-  GCVM[GC VM (de-zoomcamp-spark-medium)]
-  SparkUI[Spark UI (Port 8080)]
-
-  Host -->|has| Docker
-  Docker -->|runs| DevContainer
-  DevContainer -->|controls| GCVM
-  GCVM -->|runs| SparkUI
-  SparkUI -->|Port 8080| DevContainer
-  DevContainer -->|Port 4080| Host
-```
-
-
-# On your master node, check the Spark worker logs
-/home/spark_jhigaki_gcp/spark/spark-3.4.4-bin-hadoop3/logs/spark-spark_jhigaki_gcp-org.apache.spark.deploy.worker.Worker-1-spark-medium.out 
-cat /home/spark_jhigaki_gcp/spark/spark-3.4.4-bin-hadoop3/logs/*.out | grep "google.cloud.auth.service.account.json.keyfile"
-
-cat /home/spark_jhigaki_gcp/spark/spark-3.4.4-bin-hadoop3/logs/spark-spark_jhigaki_gcp-org.apache.spark.deploy.worker.Worker-1-spark-medium.out   | grep "google.cloud.auth.service.account.json.keyfile"
-
-
-
-
+### Commands Summary to start /stop Spark
 
 `$SPARK_HOME/sbin/stop-master.sh`
 `$SPARK_HOME/sbin/stop-worker.sh`
@@ -279,7 +256,89 @@ cat /home/spark_jhigaki_gcp/spark/spark-3.4.4-bin-hadoop3/logs/spark-spark_jhiga
 
 
 
+### Sumbitting the script
+
+spark-submit \
+  --master="spark://spark-medium.europe-southwest1-a.c.de-zoomcamp-jhigaki-course.internal:7077" \
+  /workspaces/data-engineering-zoomcamp/05-batch/09-01_taxi_rides_spark.py
+spark://spark-medium.europe-southwest1-a.c.de-zoomcamp-jhigaki-course.internal:7077
+
+spark-submit \
+  --master="spark://localhost:7077" \
+  /workspaces/data-engineering-zoomcamp/05-batch/09-01_taxi_rides_spark.py
+
+### CAnt submit from dev container
 
 
-I cannot spark write to GCS (csv or parquet), even in standalone mode
-With credentials having Owner roles, I'm still getting a 403
+on the client machine (dev container)
+`export PYTHON_PATH="${SPARK_HOME}/python/:$PYTHON_PATH"`
+`export PYTHON_PATH="${SPARK_HOME}/python/lib/py4j-0.10.9.7-src.zip:$PYTHON_PATH"`
+
+### submit from the GCP VM running the same master cluster
+
+I copied the python file
+scp /workspaces/data-engineering-zoomcamp/05-batch/09-02_taxi_rides_spark.py de-zoomcamp-spark-medium:/home/spark_jhigaki_gcp/09-02_taxi_rides_spark.py
+
+
+And submitted it from the master computer itself
+
+spark-submit \
+  --master="spark://spark-medium.europe-southwest1-a.c.de-zoomcamp-jhigaki-course.internal:7077" \
+  09-02_taxi_rides_spark.py
+
+It works as [09-02_taxi_rides_spark.py](./09-02_taxi_rides_spark.py) only reads local parquet files
+
+
+Error:
+  [java.lang.RuntimeException: java.lang.ClassNotFoundException: Class com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystem not found](./error-spark-submit-gcp-gcs.txt)
+
+Even though the settings did take effect according to the spark UI
+![alt text](../_resources/05-batch/readme.md/image-15.png)
+
+
+**FAILED also at trying to use `spark-submit` with GCP VM instances
+
+spark-submit \
+  --master="spark://spark-medium.europe-southwest1-a.c.de-zoomcamp-jhigaki-course.internal:7077" \
+  --jars /home/spark_jhigaki_gcp/spark/lib/gcs-connector-3.0.4.jar \
+  09-03_taxi_rides_spark.py
+
+**SUcess**
+
+
+### Conclusion -  spark submit
+
+GCS read and write
+
+* Using attached credentials (no keyfile) 
+* Ensuring credentials have Storage Object User
+* Ensuring scopes have object storage read and write
+* spark-submit from the same gcp vm (apparently connectivity problem to :7077)
+* specifying hadoop gcs jars in the --jar argument of spark submit
+
+Specifying the jars at --jars 
+resulted in `file://` prefix
+`spark.repl.local.jars	file:///home/spark_jhigaki_gcp/spark/lib/gcs-connector-3.0.4.jar`
+`('spark.jars', 'file:///home/spark_jhigaki_gcp/spark/lib/gcs-connector-3.0.4.jar')`
+Which is the only difference 
+
+```bash
+spark-submit \
+  --master="spark://spark-medium.europe-southwest1-a.c.de-zoomcamp-jhigaki-course.internal:7077" \
+  --jars /home/spark_jhigaki_gcp/spark/lib/gcs-connector-3.0.4.jar \
+  09-01_taxi_rides_spark.py
+```
+
+```bash
+spark-submit \
+  --master="spark://spark-medium.europe-southwest1-a.c.de-zoomcamp-jhigaki-course.internal:7077" \
+  --jars /home/spark_jhigaki_gcp/spark/lib/gcs-connector-3.0.4.jar \
+  09-01_taxi_rides_spark_params.py \
+    --input_green=gs://de-zoomcamp-jhigaki-nyc-taxi/pq/green/2019/03 \
+    --input_yellow=gs://de-zoomcamp-jhigaki-nyc-taxi/pq/yellow/2019/03 \
+    --output=gs://de-zoomcamp-jhigaki-nyc-taxi/pq/reports/y-g-metrics-bymonth/2019/03
+```
+
+## 09.02 Spark on DataProc
+https://www.youtube.com/watch?v=osAiAYahvh8&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=65 
+

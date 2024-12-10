@@ -323,3 +323,27 @@ I did notice that YOU DON'T NEED THE KEYS.JSON file if you have the service acco
 
 ![alt text](../../_resources/05-batch/readme.md/image-14.png)
 
+
+
+## Conclusion
+I could not make any of the spark / hadoop config settings to specify a credentials key file
+It always grabbed the attached service account
+To the point where I created a new service account: `spark-gcs-read-write@de-zoomcamp-jhigaki-course.iam.gserviceaccount.com`
+- No keys were generated
+- Scopes: Storage - Read Write
+
+```
+  "serviceAccounts": [
+    {
+      "email": "spark-gcs-read-write@de-zoomcamp-jhigaki-course.iam.gserviceaccount.com",
+      "scopes": [
+        "https://www.googleapis.com/auth/devstorage.read_write",
+        "https://www.googleapis.com/auth/logging.write",
+        "https://www.googleapis.com/auth/monitoring.write",
+        "https://www.googleapis.com/auth/service.management.readonly",
+        "https://www.googleapis.com/auth/servicecontrol",
+        "https://www.googleapis.com/auth/trace.append"
+      ]
+    }
+```
+

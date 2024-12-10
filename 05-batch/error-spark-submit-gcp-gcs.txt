@@ -1,0 +1,135 @@
+24/12/09 18:35:21 INFO SparkContext: Running Spark version 3.4.4
+24/12/09 18:35:21 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+24/12/09 18:35:21 INFO ResourceUtils: ==============================================================
+24/12/09 18:35:21 INFO ResourceUtils: No custom resources configured for spark.driver.
+24/12/09 18:35:21 INFO ResourceUtils: ==============================================================
+24/12/09 18:35:21 INFO SparkContext: Submitted application: 09-01_taxi_rides_spark.py
+24/12/09 18:35:21 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+24/12/09 18:35:21 INFO ResourceProfile: Limiting resource is cpu
+24/12/09 18:35:21 INFO ResourceProfileManager: Added ResourceProfile id: 0
+24/12/09 18:35:22 INFO SecurityManager: Changing view acls to: spark_jhigaki_gcp
+24/12/09 18:35:22 INFO SecurityManager: Changing modify acls to: spark_jhigaki_gcp
+24/12/09 18:35:22 INFO SecurityManager: Changing view acls groups to: 
+24/12/09 18:35:22 INFO SecurityManager: Changing modify acls groups to: 
+24/12/09 18:35:22 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: spark_jhigaki_gcp; groups with view permissions: EMPTY; users with modify permissions: spark_jhigaki_gcp; groups with modify permissions: EMPTY
+24/12/09 18:35:22 INFO Utils: Successfully started service 'sparkDriver' on port 37847.
+24/12/09 18:35:22 INFO SparkEnv: Registering MapOutputTracker
+24/12/09 18:35:22 INFO SparkEnv: Registering BlockManagerMaster
+24/12/09 18:35:22 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+24/12/09 18:35:22 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+24/12/09 18:35:22 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+24/12/09 18:35:22 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-353a4a4c-5db3-4bd1-bb6c-59c19aae3af1
+24/12/09 18:35:22 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+24/12/09 18:35:22 INFO SparkEnv: Registering OutputCommitCoordinator
+24/12/09 18:35:22 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+24/12/09 18:35:22 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+24/12/09 18:35:23 INFO SparkContext: Added JAR /home/spark_jhigaki_gcp/spark/lib/gcs-connector-3.0.4.jar at spark://spark-medium.europe-southwest1-a.c.de-zoomcamp-jhigaki-course.internal:37847/jars/gcs-connector-3.0.4.jar with timestamp 1733769321566
+24/12/09 18:35:23 INFO StandaloneAppClient$ClientEndpoint: Connecting to master spark://spark-medium.europe-southwest1-a.c.de-zoomcamp-jhigaki-course.internal:7077...
+24/12/09 18:35:23 INFO TransportClientFactory: Successfully created connection to spark-medium.europe-southwest1-a.c.de-zoomcamp-jhigaki-course.internal/10.204.0.4:7077 after 45 ms (0 ms spent in bootstraps)
+24/12/09 18:35:23 INFO StandaloneSchedulerBackend: Connected to Spark cluster with app ID app-20241209183523-0003
+24/12/09 18:35:23 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20241209183523-0003/0 on worker-20241209171659-10.204.0.4-33419 (10.204.0.4:33419) with 2 core(s)
+24/12/09 18:35:23 INFO StandaloneSchedulerBackend: Granted executor ID app-20241209183523-0003/0 on hostPort 10.204.0.4:33419 with 2 core(s), 1024.0 MiB RAM
+24/12/09 18:35:23 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 40173.
+24/12/09 18:35:23 INFO NettyBlockTransferService: Server created on spark-medium.europe-southwest1-a.c.de-zoomcamp-jhigaki-course.internal:40173
+24/12/09 18:35:23 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+24/12/09 18:35:23 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, spark-medium.europe-southwest1-a.c.de-zoomcamp-jhigaki-course.internal, 40173, None)
+24/12/09 18:35:23 INFO BlockManagerMasterEndpoint: Registering block manager spark-medium.europe-southwest1-a.c.de-zoomcamp-jhigaki-course.internal:40173 with 434.4 MiB RAM, BlockManagerId(driver, spark-medium.europe-southwest1-a.c.de-zoomcamp-jhigaki-course.internal, 40173, None)
+24/12/09 18:35:23 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, spark-medium.europe-southwest1-a.c.de-zoomcamp-jhigaki-course.internal, 40173, None)
+24/12/09 18:35:23 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, spark-medium.europe-southwest1-a.c.de-zoomcamp-jhigaki-course.internal, 40173, None)
+24/12/09 18:35:23 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20241209183523-0003/0 is now RUNNING
+24/12/09 18:35:24 INFO StandaloneSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
+24/12/09 18:35:24 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+24/12/09 18:35:24 INFO SharedState: Warehouse path is 'file:/home/spark_jhigaki_gcp/spark-warehouse'.
+24/12/09 18:35:27 WARN FileStreamSink: Assume no metadata directory. Error while looking for metadata directory in the path: gs://de-zoomcamp-jhigaki-nyc-taxi/pq/green/*/*.
+java.lang.RuntimeException: java.lang.ClassNotFoundException: Class com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystem not found
+        at org.apache.hadoop.conf.Configuration.getClass(Configuration.java:2688)
+        at org.apache.hadoop.fs.FileSystem.getFileSystemClass(FileSystem.java:3431)
+        at org.apache.hadoop.fs.FileSystem.createFileSystem(FileSystem.java:3466)
+        at org.apache.hadoop.fs.FileSystem.access$300(FileSystem.java:174)
+        at org.apache.hadoop.fs.FileSystem$Cache.getInternal(FileSystem.java:3574)
+        at org.apache.hadoop.fs.FileSystem$Cache.get(FileSystem.java:3521)
+        at org.apache.hadoop.fs.FileSystem.get(FileSystem.java:540)
+        at org.apache.hadoop.fs.Path.getFileSystem(Path.java:365)
+        at org.apache.spark.sql.execution.streaming.FileStreamSink$.hasMetadata(FileStreamSink.scala:53)
+        at org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:366)
+        at org.apache.spark.sql.DataFrameReader.loadV1Source(DataFrameReader.scala:229)
+        at org.apache.spark.sql.DataFrameReader.$anonfun$load$2(DataFrameReader.scala:211)
+        at scala.Option.getOrElse(Option.scala:189)
+        at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:211)
+        at org.apache.spark.sql.DataFrameReader.parquet(DataFrameReader.scala:563)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+        at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+        at py4j.Gateway.invoke(Gateway.java:282)
+        at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+        at py4j.commands.CallCommand.execute(CallCommand.java:79)
+        at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+        at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+        at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.ClassNotFoundException: Class com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystem not found
+        at org.apache.hadoop.conf.Configuration.getClassByName(Configuration.java:2592)
+        at org.apache.hadoop.conf.Configuration.getClass(Configuration.java:2686)
+        ... 26 more
+Traceback (most recent call last):
+  File "/home/spark_jhigaki_gcp/09-01_taxi_rides_spark.py", line 18, in <module>
+    .parquet(f'gs://de-zoomcamp-jhigaki-nyc-taxi/pq/green/*/*')
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spark_jhigaki_gcp/spark/spark-3.4.4-bin-hadoop3/python/lib/pyspark.zip/pyspark/sql/readwriter.py", line 531, in parquet
+  File "/home/spark_jhigaki_gcp/spark/spark-3.4.4-bin-hadoop3/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1322, in __call__
+  File "/home/spark_jhigaki_gcp/spark/spark-3.4.4-bin-hadoop3/python/lib/pyspark.zip/pyspark/errors/exceptions/captured.py", line 169, in deco
+  File "/home/spark_jhigaki_gcp/spark/spark-3.4.4-bin-hadoop3/python/lib/py4j-0.10.9.7-src.zip/py4j/protocol.py", line 326, in get_return_value
+py4j.protocol.Py4JJavaError: An error occurred while calling o27.parquet.
+: java.lang.RuntimeException: java.lang.ClassNotFoundException: Class com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystem not found
+        at org.apache.hadoop.conf.Configuration.getClass(Configuration.java:2688)
+        at org.apache.hadoop.fs.FileSystem.getFileSystemClass(FileSystem.java:3431)
+        at org.apache.hadoop.fs.FileSystem.createFileSystem(FileSystem.java:3466)
+        at org.apache.hadoop.fs.FileSystem.access$300(FileSystem.java:174)
+        at org.apache.hadoop.fs.FileSystem$Cache.getInternal(FileSystem.java:3574)
+        at org.apache.hadoop.fs.FileSystem$Cache.get(FileSystem.java:3521)
+        at org.apache.hadoop.fs.FileSystem.get(FileSystem.java:540)
+        at org.apache.hadoop.fs.Path.getFileSystem(Path.java:365)
+        at org.apache.spark.sql.execution.datasources.DataSource$.$anonfun$checkAndGlobPathIfNecessary$1(DataSource.scala:724)
+        at scala.collection.immutable.List.map(List.scala:293)
+        at org.apache.spark.sql.execution.datasources.DataSource$.checkAndGlobPathIfNecessary(DataSource.scala:722)
+        at org.apache.spark.sql.execution.datasources.DataSource.checkAndGlobPathIfNecessary(DataSource.scala:551)
+        at org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:404)
+        at org.apache.spark.sql.DataFrameReader.loadV1Source(DataFrameReader.scala:229)
+        at org.apache.spark.sql.DataFrameReader.$anonfun$load$2(DataFrameReader.scala:211)
+        at scala.Option.getOrElse(Option.scala:189)
+        at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:211)
+        at org.apache.spark.sql.DataFrameReader.parquet(DataFrameReader.scala:563)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+        at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+        at py4j.Gateway.invoke(Gateway.java:282)
+        at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+        at py4j.commands.CallCommand.execute(CallCommand.java:79)
+        at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+        at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+        at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.ClassNotFoundException: Class com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystem not found
+        at org.apache.hadoop.conf.Configuration.getClassByName(Configuration.java:2592)
+        at org.apache.hadoop.conf.Configuration.getClass(Configuration.java:2686)
+        ... 29 more
+
+24/12/09 18:35:27 INFO SparkContext: Invoking stop() from shutdown hook
+24/12/09 18:35:27 INFO SparkContext: SparkContext is stopping with exitCode 0.
+24/12/09 18:35:27 INFO SparkUI: Stopped Spark web UI at http://spark-medium.europe-southwest1-a.c.de-zoomcamp-jhigaki-course.internal:4040
+24/12/09 18:35:27 INFO StandaloneSchedulerBackend: Shutting down all executors
+24/12/09 18:35:27 INFO StandaloneSchedulerBackend$StandaloneDriverEndpoint: Asking each executor to shut down
+24/12/09 18:35:27 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+24/12/09 18:35:27 INFO MemoryStore: MemoryStore cleared
+24/12/09 18:35:27 INFO BlockManager: BlockManager stopped
+24/12/09 18:35:27 INFO BlockManagerMaster: BlockManagerMaster stopped
+24/12/09 18:35:27 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+24/12/09 18:35:27 INFO SparkContext: Successfully stopped SparkContext
+24/12/09 18:35:27 INFO ShutdownHookManager: Shutdown hook called
+24/12/09 18:35:27 INFO ShutdownHookManager: Deleting directory /tmp/spark-855f9599-db7b-417f-9e96-6df041b2ed49
+24/12/09 18:35:27 INFO ShutdownHookManager: Deleting directory /tmp/spark-855f9599-db7b-417f-9e96-6df041b2ed49/pyspark-0acc1d24-e6dd-4f94-a6fd-2402a29e3335
+24/12/09 18:35:27 INFO ShutdownHookManager: Deleting directory /tmp/spark-c88c0997-7eb5-4bfd-bb30-a1e5dab44648
